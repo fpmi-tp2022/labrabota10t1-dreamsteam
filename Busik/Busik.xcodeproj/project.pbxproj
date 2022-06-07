@@ -7,9 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2EAF2510284FD083000F60B9 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EAF250F284FD083000F60B9 /* SignUpViewController.swift */; };
+		2EAF2512284FDE30000F60B9 /* MainMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EAF2511284FDE30000F60B9 /* MainMenuViewController.swift */; };
 		77E5457F2846562900BA3924 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77E5457E2846562900BA3924 /* AppDelegate.swift */; };
 		77E545812846562900BA3924 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77E545802846562900BA3924 /* SceneDelegate.swift */; };
-		77E545832846562900BA3924 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77E545822846562900BA3924 /* ViewController.swift */; };
+		77E545832846562900BA3924 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77E545822846562900BA3924 /* SignInViewController.swift */; };
 		77E545862846562900BA3924 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 77E545842846562900BA3924 /* Main.storyboard */; };
 		77E5458B2846562A00BA3924 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 77E5458A2846562A00BA3924 /* Assets.xcassets */; };
 		77E5458E2846562A00BA3924 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 77E5458C2846562A00BA3924 /* LaunchScreen.storyboard */; };
@@ -51,10 +53,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2EAF250F284FD083000F60B9 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		2EAF2511284FDE30000F60B9 /* MainMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuViewController.swift; sourceTree = "<group>"; };
 		77E5457B2846562900BA3924 /* Busik.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Busik.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		77E5457E2846562900BA3924 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		77E545802846562900BA3924 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		77E545822846562900BA3924 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		77E545822846562900BA3924 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		77E545852846562900BA3924 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		77E5458A2846562A00BA3924 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		77E5458D2846562A00BA3924 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -139,8 +143,10 @@
 				77E545EC284666B300BA3924 /* Busik.xcdatamodeld */,
 				77E5457E2846562900BA3924 /* AppDelegate.swift */,
 				77E545802846562900BA3924 /* SceneDelegate.swift */,
-				77E545822846562900BA3924 /* ViewController.swift */,
+				77E545822846562900BA3924 /* SignInViewController.swift */,
 				77E545842846562900BA3924 /* Main.storyboard */,
+				2EAF2511284FDE30000F60B9 /* MainMenuViewController.swift */,
+				2EAF250F284FD083000F60B9 /* SignUpViewController.swift */,
 				77E5458A2846562A00BA3924 /* Assets.xcassets */,
 				77E5458C2846562A00BA3924 /* LaunchScreen.storyboard */,
 				77E5458F2846562A00BA3924 /* Info.plist */,
@@ -358,11 +364,13 @@
 				77E546402846714B00BA3924 /* Route+CoreDataClass.swift in Sources */,
 				77E5463D2846714B00BA3924 /* BookedTicket+CoreDataProperties.swift in Sources */,
 				77E546452846714B00BA3924 /* Locality+CoreDataProperties.swift in Sources */,
-				77E545832846562900BA3924 /* ViewController.swift in Sources */,
+				77E545832846562900BA3924 /* SignInViewController.swift in Sources */,
 				77E546412846714B00BA3924 /* Route+CoreDataProperties.swift in Sources */,
+				2EAF2510284FD083000F60B9 /* SignUpViewController.swift in Sources */,
 				77E5457F2846562900BA3924 /* AppDelegate.swift in Sources */,
 				77E546432846714B00BA3924 /* User+CoreDataProperties.swift in Sources */,
 				77E5463F2846714B00BA3924 /* Ride+CoreDataProperties.swift in Sources */,
+				2EAF2512284FDE30000F60B9 /* MainMenuViewController.swift in Sources */,
 				77E545812846562900BA3924 /* SceneDelegate.swift in Sources */,
 				77E5463C2846714B00BA3924 /* BookedTicket+CoreDataClass.swift in Sources */,
 			);
