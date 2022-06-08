@@ -141,18 +141,27 @@
         <!--Map-->
         <scene sceneID="kPY-uA-hUl">
             <objects>
-                <viewController id="avW-IP-Sm6" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MapStoryboard" id="avW-IP-Sm6" customClass="MapViewController" customModule="Busik" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bi2-ls-ePI">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="dPz-7Q-KTQ">
+                                <rect key="frame" x="20" y="20" width="374" height="591"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </mapView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="zRP-oI-Gfg"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Map" image="map" catalog="system" id="Ghp-FK-nns"/>
+                    <connections>
+                        <outlet property="map" destination="dPz-7Q-KTQ" id="YUd-zj-Ade"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sAT-nV-iFP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="951" y="1430"/>
+            <point key="canvasLocation" x="950.72463768115949" y="1429.8913043478262"/>
         </scene>
         <!--Search-->
         <scene sceneID="TqT-yy-CSG">
