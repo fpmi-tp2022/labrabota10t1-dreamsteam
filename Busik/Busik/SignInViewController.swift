@@ -7,13 +7,14 @@
 
 import UIKit
 
-var _userRepository: UserRepository!;
-
 class SignInViewController: UIViewController {
 
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    
     public var CtxManager: ContextManager!;
+    var _userRepository: UserRepository!;
+    var _localityRepository: LocalityRepository!;
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,12 +24,13 @@ class SignInViewController: UIViewController {
         let ctx = ContextRetriever.RetrieveContext();
         CtxManager = ContextManager(context: ctx);
         _userRepository = UserRepository(contextManager: CtxManager);
+        _localityRepository = LocalityRepository(contextManager: CtxManager);
         let dataSeeder = DataSeeder(ctxManager: CtxManager);
         
         //ATTENTION: uncomment to get add test data to db if needed
         //But do it only once on each device
-        
         //dataSeeder.SeedUsers()
+        //dataSeeder.SeedLocalities();
     }
     
     @IBAction func signInButtonClicked(_ sender: Any) {
