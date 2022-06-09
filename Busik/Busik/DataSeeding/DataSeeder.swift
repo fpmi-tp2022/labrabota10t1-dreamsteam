@@ -12,12 +12,14 @@ class DataSeeder
     private let _ctxManager: ContextManager;
     private var _userRepository: UserRepository;
     private var _localityRepository: LocalityRepository;
+    private var _routeRepository: RouteRepository;
     
     init(ctxManager: ContextManager)
     {
         _ctxManager = ctxManager;
         _userRepository = UserRepository(contextManager: ctxManager);
         _localityRepository = LocalityRepository(contextManager: ctxManager);
+        _routeRepository = RouteRepository(contextManager: ctxManager);
     }
     
     public func SeedUsers()
@@ -36,6 +38,14 @@ class DataSeeder
         _localityRepository.AddLocality(name: "Mogilev", latitude: 53.900716, longitude: 30.331360);
         _localityRepository.AddLocality(name: "Vitebsk", latitude: 55.184806, longitude: 30.201622);
         _localityRepository.AddLocality(name: "Gomel", latitude: 52.441176, longitude: 30.987846);
+    }
+    
+    public func SeedRoutes()
+    {
+        /*let localityMinsk: [Locality]? = _localityRepository.GetLocalityByName(name: "Minsk");
+        let localityBrest: [Locality]? = _localityRepository.GetLocalityByName(name: "Brest");
+        
+        _routeRepository.AddRoute(from: localityMinsk![0], to: localityBrest![0]);*/
     }
     
 }

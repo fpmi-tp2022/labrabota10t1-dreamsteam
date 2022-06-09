@@ -15,6 +15,7 @@ class SignInViewController: UIViewController {
     public var CtxManager: ContextManager!;
     var _userRepository: UserRepository!;
     var _localityRepository: LocalityRepository!;
+    var _roureRepository: RouteRepository!;
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,12 +26,14 @@ class SignInViewController: UIViewController {
         CtxManager = ContextManager(context: ctx);
         _userRepository = UserRepository(contextManager: CtxManager);
         _localityRepository = LocalityRepository(contextManager: CtxManager);
+        _roureRepository = RouteRepository(contextManager: CtxManager);
         let dataSeeder = DataSeeder(ctxManager: CtxManager);
         
         //ATTENTION: uncomment to get add test data to db if needed
         //But do it only once on each device
         //dataSeeder.SeedUsers()
         //dataSeeder.SeedLocalities();
+        //dataSeeder.SeedRoutes();
     }
     
     @IBAction func signInButtonClicked(_ sender: Any) {
