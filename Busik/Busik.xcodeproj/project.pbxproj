@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		2EAF2510284FD083000F60B9 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EAF250F284FD083000F60B9 /* SignUpViewController.swift */; };
 		2EAF2512284FDE30000F60B9 /* MainMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EAF2511284FDE30000F60B9 /* MainMenuViewController.swift */; };
+		772218052852496C00884076 /* RideRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772218042852496C00884076 /* RideRepository.swift */; };
+		7722180A2852564900884076 /* BookedTicket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772218092852564900884076 /* BookedTicket.swift */; };
 		77C61E0228513B2A00311804 /* LocalityRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77C61E0128513B2A00311804 /* LocalityRepository.swift */; };
 		77C61E072851447E00311804 /* RouteRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77C61E062851447E00311804 /* RouteRepository.swift */; };
 		77E5457F2846562900BA3924 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77E5457E2846562900BA3924 /* AppDelegate.swift */; };
@@ -57,6 +59,8 @@
 /* Begin PBXFileReference section */
 		2EAF250F284FD083000F60B9 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		2EAF2511284FDE30000F60B9 /* MainMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuViewController.swift; sourceTree = "<group>"; };
+		772218042852496C00884076 /* RideRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RideRepository.swift; sourceTree = "<group>"; };
+		772218092852564900884076 /* BookedTicket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookedTicket.swift; sourceTree = "<group>"; };
 		77C61E0128513B2A00311804 /* LocalityRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalityRepository.swift; sourceTree = "<group>"; };
 		77C61E062851447E00311804 /* RouteRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteRepository.swift; sourceTree = "<group>"; };
 		77E5457B2846562900BA3924 /* Busik.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Busik.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -208,6 +212,8 @@
 				77E5464A2846718900BA3924 /* UserRepository.swift */,
 				77C61E0128513B2A00311804 /* LocalityRepository.swift */,
 				77C61E062851447E00311804 /* RouteRepository.swift */,
+				772218042852496C00884076 /* RideRepository.swift */,
+				772218092852564900884076 /* BookedTicket.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -361,6 +367,7 @@
 				77E545EE284666B300BA3924 /* Busik.xcdatamodeld in Sources */,
 				77E546442846714B00BA3924 /* Locality+CoreDataClass.swift in Sources */,
 				77E5462728466F2300BA3924 /* ContextRetriever.swift in Sources */,
+				772218052852496C00884076 /* RideRepository.swift in Sources */,
 				77E5461C2846683A00BA3924 /* ContextManager.swift in Sources */,
 				77E546422846714B00BA3924 /* User+CoreDataClass.swift in Sources */,
 				77E5465128467DE700BA3924 /* Role.swift in Sources */,
@@ -378,6 +385,7 @@
 				77E5457F2846562900BA3924 /* AppDelegate.swift in Sources */,
 				77E546432846714B00BA3924 /* User+CoreDataProperties.swift in Sources */,
 				77E5463F2846714B00BA3924 /* Ride+CoreDataProperties.swift in Sources */,
+				7722180A2852564900884076 /* BookedTicket.swift in Sources */,
 				2EAF2512284FDE30000F60B9 /* MainMenuViewController.swift in Sources */,
 				77E545812846562900BA3924 /* SceneDelegate.swift in Sources */,
 				77E5463C2846714B00BA3924 /* BookedTicket+CoreDataClass.swift in Sources */,

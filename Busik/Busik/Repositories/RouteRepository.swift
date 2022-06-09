@@ -96,4 +96,23 @@ class RouteRepository
         }
         return routes;
     }
+    
+    func GetRoute(fromLocalityName: String, toLocalityName: String) -> [Route]?
+    {
+        let fetchRequest = NSFetchRequest<Route>(entityName: "Route");
+        
+        let predicate = NSPredicate(format: "to.name == %@ and from.name == %@", toLocalityName, fromLocalityName);
+        
+        fetchRequest.predicate = predicate;
+        
+        var routes: [Route]? = nil
+        
+        do{
+            try routes = _ctxManager.Context.fetch(fetchRequest);
+        }
+        catch let error as NSError{
+            print("Get routes by to and from locality name request failed with error: \(error)");
+        }
+        return routes;
+    }
 }
