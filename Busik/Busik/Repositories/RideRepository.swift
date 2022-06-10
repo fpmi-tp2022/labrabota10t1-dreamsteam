@@ -104,6 +104,24 @@ class RideRepository
         return rides;
     }
     
+    func GetRides(before: Date, after: Date, fromLocalityName: String, toLocalityName: String) -> [Ride]?{
+        let fetchRequest = NSFetchRequest<Ride>(entityName: "Ride");
+        
+        let predicate = NSPredicate(format: "departureTime <= %@ and departureTime >= %@ and route.to = %@ and route.from = %@", before as CVarArg, after as CVarArg, toLocalityName, fromLocalityName);
+        
+        fetchRequest.predicate = predicate;
+        
+        var rides: [Ride]? = nil
+        
+        do{
+            try rides = _ctxManager.Context.fetch(fetchRequest);
+        }
+        catch let error as NSError{
+            print("Get rides request failed with error: \(error)");
+        }
+        return rides;
+    }
+    
     func GetRides(fromLocality: Locality) -> [Ride]?{
         
         let fetchRequest = NSFetchRequest<Ride>(entityName: "Ride");
