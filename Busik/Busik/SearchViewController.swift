@@ -35,11 +35,11 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         //ATTENTION: uncomment to get add test data to db if needed
         //But do it only once on each device
-        dataSeeder.SeedUsers()
-        dataSeeder.SeedLocalities();
-        dataSeeder.SeedRoutes();
-        dataSeeder.SeedRides();
-        dataSeeder.SeedBookedTickets();
+        //dataSeeder.SeedUsers()
+        //dataSeeder.SeedLocalities();
+        //dataSeeder.SeedRoutes();
+        //dataSeeder.SeedRides();
+        //dataSeeder.SeedBookedTickets();
         
         //_ridesRepository.GetRides(before: <#T##Date#>, after: <#T##Date#>)
     }

@@ -10,6 +10,7 @@ import UIKit
 class SignUpViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var errorField: UILabel!
     @IBOutlet weak var repeatPasswordTextField: UITextField!
     
     public var CtxManager: ContextManager!;
@@ -24,20 +25,30 @@ class SignUpViewController: UIViewController {
     }
     
     @IBAction func signUpButtonClicked(_ sender: Any) {
-        if passwordTextField.text! != repeatPasswordTextField.text! { // TODO: make a better password check
-            passwordTextField.text = "Different passwords"
+        let login = emailTextField.text!
+        let password = passwordTextField.text!
+        let repeatPassword = repeatPasswordTextField.text!
+        if (login.isEmpty || password.isEmpty || repeatPassword.isEmpty) {
+            errorField.text = "Field can't be empty"
             return
         }
-        if(_userRepository.GetUsersByLogin(login: emailTextField.text!) == nil){
-            emailTextField.text = "User with this email already exists"
+        if password != repeatPassword {
+            errorField.text = "Different passwords"
             return
         }
         
-        UserDefaults.standard.set(emailTextField.text!, forKey: "username")
-        UserDefaults.standard.set(passwordTextField.text!, forKey: "password")
-        self.dismiss(animated: true, completion: nil)
-        
-        _userRepository.AddUser(login: emailTextField.text!, password: passwordTextField.text!)
+        let user = _userRepository.GetUsersByLogin(login: login)
+
+        if (user == nil) {
+            errorField.text = "Fatal error"
+            return
+        }
+        if(!user!.isEmpty){
+            errorField.text = "User with this email already exists"
+            return
+        }
+    
+        _userRepository.AddUser(login: login, password: password)
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let secondVC = storyboard.instantiateViewController(identifier: "MainMenuStoryboard")

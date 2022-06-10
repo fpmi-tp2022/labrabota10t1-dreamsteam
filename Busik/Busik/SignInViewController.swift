@@ -11,6 +11,7 @@ class SignInViewController: UIViewController {
 
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var errorField: UILabel!
     
     public var CtxManager: ContextManager!;
     var _userRepository: UserRepository!;
@@ -44,11 +45,27 @@ class SignInViewController: UIViewController {
     }
     
     @IBAction func signInButtonClicked(_ sender: Any) {
-        /*if (UserDefaults.standard.string(forKey: "password") != passwordTextField.text!) ||
-            (UserDefaults.standard.string(forKey: "username") != emailTextField.text!) {
-            passwordTextField.text = "Wrong password or name"
+        let login = emailTextField.text!
+        let password = passwordTextField.text!
+        if (login.isEmpty || password.isEmpty) {
+            errorField.text = "Field can't be empty"
             return
-        }*/
+        }
+        
+        let user = _userRepository.GetUsersByLogin(login: login)
+
+        if (user == nil) {
+            errorField.text = "Fatal error"
+            return
+        }
+        if(user!.isEmpty){
+            errorField.text = "User with this email don't exists"
+            return
+        }
+        if(user?.first?.password != password){
+            errorField.text = "Wrong password"
+            return
+        }
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let secondVC = storyboard.instantiateViewController(identifier: "MainMenuStoryboard")
