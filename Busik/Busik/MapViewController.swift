@@ -14,7 +14,14 @@ class MapViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var map: MKMapView!
     
     @IBOutlet weak var validationLabel: UILabel!
-    let suggestions: [String]! = ["Minsk", "Mogilev"]
+    var suggestions: [String]! = []
+    
+    public var CtxManager: ContextManager!;
+    var _userRepository: UserRepository!;
+    var _localityRepository: LocalityRepository!;
+    var _roureRepository: RouteRepository!;
+    var _ridesRepository: RideRepository!;
+    var _bookedTicketRepository: BookedTicketRepository!;
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool{
         return !autoCompleteText(in: textField, using: string, suggestionsArray: suggestions);
@@ -68,6 +75,22 @@ class MapViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let ctx = ContextRetriever.RetrieveContext();
+        CtxManager = ContextManager(context: ctx);
+        _userRepository = UserRepository(contextManager: CtxManager);
+        _localityRepository = LocalityRepository(contextManager: CtxManager);
+        _roureRepository = RouteRepository(contextManager: CtxManager);
+        _ridesRepository = RideRepository(contextManager: CtxManager);
+        _bookedTicketRepository = BookedTicketRepository(contextManager: CtxManager);
+        
+        var localities = _localityRepository.GetLocalities()!;
+        
+        for var locality in localities{
+            suggestions.append(locality.name!);
+        }
+        
+        print(suggestions)
         
         departurePointTextField.delegate = self;
         
