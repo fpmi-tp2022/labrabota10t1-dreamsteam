@@ -8,11 +8,70 @@
 import UIKit
 import MapKit
 
-class MapViewController: UIViewController {
+class MapViewController: UIViewController, UITextFieldDelegate {
 
+    @IBOutlet weak var departurePointTextField: UITextField!
     @IBOutlet weak var map: MKMapView!
+    
+    @IBOutlet weak var validationLabel: UILabel!
+    let suggestions: [String]! = ["Minsk", "Mogilev"]
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool{
+        return !autoCompleteText(in: textField, using: string, suggestionsArray: suggestions);
+    }
+    
+    func autoCompleteText(in textField: UITextField, using string: String, suggestionsArray: [String]) -> Bool{
+        if !string.isEmpty,
+
+           let selectedTextRange = textField.selectedTextRange,
+
+           selectedTextRange.end == textField.endOfDocument,
+
+           let prefixRange = textField.textRange(from: textField.beginningOfDocument, to: selectedTextRange.start),
+
+           let text = textField.text( in : prefixRange) {
+
+            let prefix = text + string
+
+            let matches = suggestionsArray.filter {
+
+                $0.hasPrefix(prefix)
+
+            }
+
+            if (matches.count > 0) {
+
+                textField.text = matches[0]
+
+                if let start = textField.position(from: textField.beginningOfDocument, offset: prefix.count) {
+
+                    textField.selectedTextRange = textField.textRange(from: start, to: textField.endOfDocument)
+
+            return true
+
+        }
+
+            }
+
+        }
+
+        return false
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+
+            textField.resignFirstResponder()
+
+            return true
+
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        departurePointTextField.delegate = self;
+        
+        
         
         let london = MKPointAnnotation()
         london.title = "London"
@@ -20,6 +79,7 @@ class MapViewController: UIViewController {
         map.addAnnotation(london)
         
         map.reloadInputViews()
+        
         //let initialLocation = CLLocation(latitude: 53.893009, longitude: 27.567444)
         //map.centerToLocation(initialLocation)
 
