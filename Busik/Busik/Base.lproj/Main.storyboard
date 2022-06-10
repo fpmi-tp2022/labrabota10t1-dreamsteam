@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina5_5" orientation="portrait" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -14,7 +14,7 @@
             <objects>
                 <viewController storyboardIdentifier="SignInStoryboard" id="BYZ-38-t0r" customClass="SignInViewController" customModule="Busik" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sign In" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u4Q-19-Wqo">
@@ -75,7 +75,7 @@
             <objects>
                 <viewController storyboardIdentifier="SignUpStoryboard" id="h6H-LV-HU0" customClass="SignUpViewController" customModule="Busik" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="aPZ-Ks-5gQ">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qug-li-JGf">
@@ -143,7 +143,7 @@
             <objects>
                 <viewController id="avW-IP-Sm6" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bi2-ls-ePI">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="zRP-oI-Gfg"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -157,18 +157,84 @@
         <!--Search-->
         <scene sceneID="TqT-yy-CSG">
             <objects>
-                <viewController id="DSj-li-w2e" sceneMemberID="viewController">
+                <viewController id="DSj-li-w2e" customClass="SearchViewController" customModule="Busik" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8Dz-X3-HWR">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="5oN-xV-bDf">
+                                <rect key="frame" x="0.0" y="207" width="414" height="606"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="ZJl-PI-2MI">
+                                        <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ZJl-PI-2MI" id="Eei-B3-D5T">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="RjW-6x-D3h">
+                                                    <rect key="frame" x="-207" y="31" width="414" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="6ho-Fy-viN">
+                                <rect key="frame" x="0.0" y="44" width="414" height="32"/>
+                                <segments>
+                                    <segment title="Minsk"/>
+                                    <segment title="Grodno"/>
+                                    <segment title="Gomel"/>
+                                    <segment title="Vitebsk"/>
+                                </segments>
+                            </segmentedControl>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="XUm-yD-Uke">
+                                <rect key="frame" x="0.0" y="80" width="414" height="32"/>
+                                <segments>
+                                    <segment title="Minsk"/>
+                                    <segment title="Grodno"/>
+                                    <segment title="Gomel"/>
+                                    <segment title="Vitebsk"/>
+                                </segments>
+                            </segmentedControl>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" datePickerMode="date" style="wheels" id="opz-9h-onW">
+                                <rect key="frame" x="0.0" y="143" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            </datePicker>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="jsL-Zj-e18"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="5oN-xV-bDf" firstAttribute="leading" secondItem="jsL-Zj-e18" secondAttribute="leading" id="FIN-jW-0fL"/>
+                            <constraint firstItem="6ho-Fy-viN" firstAttribute="top" secondItem="jsL-Zj-e18" secondAttribute="top" id="Ji0-HP-ebX"/>
+                            <constraint firstItem="XUm-yD-Uke" firstAttribute="leading" secondItem="8Dz-X3-HWR" secondAttribute="leading" id="POB-Vb-AHc"/>
+                            <constraint firstItem="6ho-Fy-viN" firstAttribute="trailing" secondItem="jsL-Zj-e18" secondAttribute="trailing" id="Soa-R1-C1z"/>
+                            <constraint firstItem="5oN-xV-bDf" firstAttribute="trailing" secondItem="jsL-Zj-e18" secondAttribute="trailing" id="Vgm-Xy-4uJ"/>
+                            <constraint firstItem="XUm-yD-Uke" firstAttribute="top" secondItem="6ho-Fy-viN" secondAttribute="bottom" constant="5" id="ZiG-O4-CQE"/>
+                            <constraint firstItem="opz-9h-onW" firstAttribute="top" secondItem="XUm-yD-Uke" secondAttribute="bottom" constant="15" id="gZl-Ut-7PR"/>
+                            <constraint firstItem="6ho-Fy-viN" firstAttribute="leading" secondItem="jsL-Zj-e18" secondAttribute="leading" id="hg5-4p-4hG"/>
+                            <constraint firstItem="jsL-Zj-e18" firstAttribute="trailing" secondItem="XUm-yD-Uke" secondAttribute="trailing" id="pe3-lD-nPN"/>
+                            <constraint firstItem="5oN-xV-bDf" firstAttribute="bottom" secondItem="jsL-Zj-e18" secondAttribute="bottom" id="pwG-Mk-Jfy"/>
+                            <constraint firstItem="5oN-xV-bDf" firstAttribute="top" secondItem="opz-9h-onW" secondAttribute="bottom" constant="20" id="x6E-6w-WUl"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Search" image="magnifyingglass" catalog="system" id="DZm-OT-eUw"/>
+                    <connections>
+                        <outlet property="cityFromControl" destination="6ho-Fy-viN" id="qnM-Fb-aoW"/>
+                        <outlet property="cityToControl" destination="XUm-yD-Uke" id="vjB-o5-JOH"/>
+                        <outlet property="datePicker" destination="opz-9h-onW" id="SLU-hr-Yny"/>
+                        <outlet property="timetable" destination="5oN-xV-bDf" id="kfa-hV-HlI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jba-yT-cQV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="951" y="821"/>
+            <point key="canvasLocation" x="950.72463768115949" y="820.92391304347836"/>
         </scene>
         <!--Main Menu View Controller-->
         <scene sceneID="Dbr-OV-xZC">
