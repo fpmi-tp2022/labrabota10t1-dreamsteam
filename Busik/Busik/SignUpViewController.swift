@@ -12,9 +12,15 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var repeatPasswordTextField: UITextField!
     
+    public var CtxManager: ContextManager!;
+    var _userRepository: UserRepository!;
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        let ctx = ContextRetriever.RetrieveContext();
+        CtxManager = ContextManager(context: ctx);
+        _userRepository = UserRepository(contextManager: CtxManager);
     }
     
     @IBAction func signUpButtonClicked(_ sender: Any) {

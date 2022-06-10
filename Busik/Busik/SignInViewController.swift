@@ -7,13 +7,17 @@
 
 import UIKit
 
-var _userRepository: UserRepository!;
-
 class SignInViewController: UIViewController {
 
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    
     public var CtxManager: ContextManager!;
+    var _userRepository: UserRepository!;
+    var _localityRepository: LocalityRepository!;
+    var _roureRepository: RouteRepository!;
+    var _ridesRepository: RideRepository!;
+    var _bookedTicketRepository: BookedTicketRepository!;
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,12 +27,20 @@ class SignInViewController: UIViewController {
         let ctx = ContextRetriever.RetrieveContext();
         CtxManager = ContextManager(context: ctx);
         _userRepository = UserRepository(contextManager: CtxManager);
+        _localityRepository = LocalityRepository(contextManager: CtxManager);
+        _roureRepository = RouteRepository(contextManager: CtxManager);
+        _ridesRepository = RideRepository(contextManager: CtxManager);
+        _bookedTicketRepository = BookedTicketRepository(contextManager: CtxManager);
+        
         let dataSeeder = DataSeeder(ctxManager: CtxManager);
         
         //ATTENTION: uncomment to get add test data to db if needed
         //But do it only once on each device
-        
         //dataSeeder.SeedUsers()
+        //dataSeeder.SeedLocalities();
+        //dataSeeder.SeedRoutes();
+        //dataSeeder.SeedRides();
+        //dataSeeder.SeedBookedTickets();
     }
     
     @IBAction func signInButtonClicked(_ sender: Any) {
