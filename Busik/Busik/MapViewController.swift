@@ -15,6 +15,7 @@ class MapViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var validationLabel: UILabel!
     var suggestions: [String]! = []
+    var activeAnnotations: [MKAnnotation]! = []
     
     public var CtxManager: ContextManager!;
     var _userRepository: UserRepository!;
@@ -25,6 +26,35 @@ class MapViewController: UIViewController, UITextFieldDelegate {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool{
         return !autoCompleteText(in: textField, using: string, suggestionsArray: suggestions);
+    }
+    
+    @IBAction func findButtonClicked(_ sender: Any) {
+        var request = departurePointTextField.text;
+        
+        if(request == nil){
+            validationLabel.isHidden = false;
+            return;
+        }
+        
+        if(!suggestions.contains(request!)){
+            validationLabel.isHidden = false;
+            return;
+        }
+        
+        var locality = _localityRepository.GetLocalityByName(name: request!);
+        
+        var localities: [Locality] = []
+        
+        var routes = locality![0].routesFrom!.allObjects as! [Route];
+        for var route in routes{
+            localities.append(route.to!);
+        }
+        RefreshAnnotations(localities: localities);
+        
+    }
+    
+    func RefreshAnnotations(localities: [Locality]){
+        map.removeAnnotations(activeAnnotations);
     }
     
     func autoCompleteText(in textField: UITextField, using string: String, suggestionsArray: [String]) -> Bool{
