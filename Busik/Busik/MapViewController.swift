@@ -62,7 +62,7 @@ class MapViewController: UIViewController, UITextFieldDelegate, MKMapViewDelegat
         
         let coordDep = CLLocationCoordinate2D(latitude: departure.latitude, longitude: departure.longitude);
         
-         loc = Artwork(title: departure.name, locationName: departure.name! + ", Belarus", discipline: "Departure", coordinate: coordDep)
+        var loc = Artwork(title: departure.name, locationName: departure.name! + ", Belarus", discipline: "Departure", coordinate: coordDep)
         
         map.addAnnotation(loc);
         activeAnnotations.append(loc);
@@ -152,20 +152,6 @@ class MapViewController: UIViewController, UITextFieldDelegate, MKMapViewDelegat
         }
         
         //print(suggestions)
-        
-        let ctx = ContextRetriever.RetrieveContext();
-        CtxManager = ContextManager(context: ctx);
-        _userRepository = UserRepository(contextManager: CtxManager);
-        _localityRepository = LocalityRepository(contextManager: CtxManager);
-        _roureRepository = RouteRepository(contextManager: CtxManager);
-        _ridesRepository = RideRepository(contextManager: CtxManager);
-        _bookedTicketRepository = BookedTicketRepository(contextManager: CtxManager);
-
-        let localities = _localityRepository.GetLocalities()!;
-        
-        for locality in localities{
-            suggestions.append(locality.name!);
-        }
         
         
         departurePointTextField.delegate = self;
