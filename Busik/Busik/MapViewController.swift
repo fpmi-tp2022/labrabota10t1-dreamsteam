@@ -127,14 +127,13 @@ class MapViewController: UIViewController, UITextFieldDelegate {
         _roureRepository = RouteRepository(contextManager: CtxManager);
         _ridesRepository = RideRepository(contextManager: CtxManager);
         _bookedTicketRepository = BookedTicketRepository(contextManager: CtxManager);
-        
+
         let localities = _localityRepository.GetLocalities()!;
         
         for locality in localities{
             suggestions.append(locality.name!);
         }
         
-        //print(suggestions)
         
         departurePointTextField.delegate = self;
         
