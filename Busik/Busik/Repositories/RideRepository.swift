@@ -160,6 +160,12 @@ class RideRepository
         return rides;
     }
     
+    func GetRides(fromLocality: Locality, toLocality: Locality, before: Date, after: Date) -> [Ride]?{
+        //TODO:
+        var rides: [Ride]? = nil
+        return rides;
+    }
+    
     func GetRides(route: Route) -> [Ride]?
     {
         route.rides?.allObjects as! [Ride]?;
