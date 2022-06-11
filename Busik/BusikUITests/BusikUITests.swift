@@ -21,6 +21,15 @@ class BusikUITests: XCTestCase {
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
+    
+    func test_has_sign_in(){
+        
+        let app = XCUIApplication();
+        app.launch();
+        app/*@START_MENU_TOKEN@*/.buttons["Create account"].staticTexts["Create account"]/*[[".buttons[\"Create account\"].staticTexts[\"Create account\"]",".staticTexts[\"Create account\"]"],[[[-1,1],[-1,0]]],[1]]@END_MENU_TOKEN@*/.tap();
+        app.buttons["Sign Up"].tap();
+        XCTAssert(app.staticTexts["Field can't be empty"].exists);
+    }
 
     func testExample() throws {
         // UI tests must launch the application that they test.
