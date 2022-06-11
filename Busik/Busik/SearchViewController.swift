@@ -12,8 +12,8 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     @IBOutlet weak var beforeDatePicker: UIDatePicker!
     @IBOutlet weak var afterDatePicker: UIDatePicker!
     @IBOutlet weak var timetable: UITableView!
-    @IBOutlet weak var cityFromControl: UISegmentedControl!
-    @IBOutlet weak var cityToControl: UISegmentedControl!
+    @IBOutlet weak var fromTextField: UITextField!
+    @IBOutlet weak var toTextField: UITextField!
     
     public var CtxManager: ContextManager!;
     var _userRepository: UserRepository!;
@@ -62,7 +62,6 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         //cityTo = (_localityRepository.GetLocalityByName(name: "Minsk")?.first!)!
         
         timetable.register(UITableViewCell.self, forCellReuseIdentifier: CELL_ID)
-        FillTableWithData()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -70,10 +69,6 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        //var cell = tableView.dequeueReusableCell(withIdentifier: "cell");
-
-        //print("IndexPath: \(indexPath), number \(indexPath.item)\n")
-        //return cell!;
         let dateFormatter = DateFormatter()
         let cell = timetable.dequeueReusableCell(withIdentifier: CELL_ID, for: indexPath)
         let item = items[indexPath.row]
@@ -83,50 +78,22 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         return cell
     }
-    @IBAction func fromSegmentedControlChanged(_ sender: Any) {
-        switch(cityFromControl.selectedSegmentIndex){
-        case 0:
-            cityFrom = (_localityRepository.GetLocalityByName(name: "Minsk")?.first!)!
-            break
-        case 1:
-            cityFrom = (_localityRepository.GetLocalityByName(name: "Grodno")?.first!)!
-            break
-        case 2:
-            cityFrom = (_localityRepository.GetLocalityByName(name: "Gomel")?.first!)!
-            break
-        case 3:
-            cityFrom = (_localityRepository.GetLocalityByName(name: "Vitebsk")?.first!)!
-            break
-        default:
-            break
-        }
-        FillTableWithData()
+    
+    @IBAction func cityFromChanged(_ sender: Any) {
+        let cityFromText = fromTextField.text!
+        cityFrom = (_localityRepository.GetLocalityByName(name: cityFromText)?.first!)!
     }
-    @IBAction func toSegmentedControlChanged(_ sender: Any) {
-        switch(cityToControl.selectedSegmentIndex){
-        case 0:
-            cityTo = (_localityRepository.GetLocalityByName(name: "Minsk")?.first!)!
-            break
-        case 1:
-            cityTo = (_localityRepository.GetLocalityByName(name: "Grodno")?.first!)!
-            break
-        case 2:
-            cityTo = (_localityRepository.GetLocalityByName(name: "Gomel")?.first!)!
-            break
-        case 3:
-            cityTo = (_localityRepository.GetLocalityByName(name: "Vitebsk")?.first!)!
-            break
-        default:
-            break
-        }
-        FillTableWithData()
+    @IBAction func cityToChanged(_ sender: Any) {
+        let cityToText = toTextField.text!
+        cityTo = (_localityRepository.GetLocalityByName(name: cityToText)?.first!)!
     }
     @IBAction func beforeDateChanged(_ sender: Any) {
         beforeDate = beforeDatePicker.date
-        FillTableWithData()
     }
     @IBAction func afterDateChanged(_ sender: Any) {
         afterDate = afterDatePicker.date
+    }
+    @IBAction func buttonSearchClicked(_ sender: Any) {
         FillTableWithData()
     }
     
