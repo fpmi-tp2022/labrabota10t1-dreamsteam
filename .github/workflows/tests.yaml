@@ -1,9 +1,11 @@
-name: CI
+name: Tests
 
 on:
   push:
     branches:
     - tests
+    - main
+  
 
 jobs:
   build:
