@@ -98,7 +98,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     private func FillTableWithData(){
-        let data = _ridesRepository.GetRides(fromLocality: cityFrom, toLocality: cityTo, before: beforeDate, after: afterDate)
+        let data = _ridesRepository.GetRides(from: afterDate, to: beforeDate, fromLocality: cityFrom, toLocality: cityTo)
         if data == nil{
             return
         }
