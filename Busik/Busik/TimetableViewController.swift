@@ -51,14 +51,13 @@ class TimetableViewController : NSObject, UITableViewDataSource, UITableViewDele
         let item = items[indexPath.row]
         
         cell.constructFromRide(ride: item)
-        
         return cell
     }
     
     
     public func FillTableWithData(_ beforeDate: Date, _ afterDate: Date, _ cityFromName: String, _ cityToName : String){
-        var cityFrom = _localityRepository.GetLocalityByName(name: cityFromName)
-        var cityTo = _localityRepository.GetLocalityByName(name: cityToName)
+        let cityFrom = _localityRepository.GetLocalityByName(name: cityFromName)
+        let cityTo = _localityRepository.GetLocalityByName(name: cityToName)
         if cityFrom == nil || cityTo == nil {
             errorLabel.text = "Internal error"
             return
@@ -72,9 +71,7 @@ class TimetableViewController : NSObject, UITableViewDataSource, UITableViewDele
             return
         }
         
-        //var data = _ridesRepository.GetRides(before: beforeDate, after: afterDate, fromLocalityName: cityFromName, toLocalityName: cityToName)
-        
-        var data = _ridesRepository.GetRides(toLocality: cityTo!.first!)
+        let data = _ridesRepository.GetRides(from: beforeDate, to: afterDate, fromLocality: cityFrom!.first!, toLocality: cityTo!.first!)
         if data == nil{
             errorLabel.text = "Internal error"
             return
