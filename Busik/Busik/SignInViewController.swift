@@ -67,7 +67,9 @@ class SignInViewController: UIViewController {
             errorField.text = "User with this email don't exists"
             return
         }
-        if(user?.first?.password != password){
+        let isValidPassword = PasswordComparer.Compare(coming: password, stored: user?.first?.password);
+        
+        if(!isValidPassword){
             errorField.text = "Wrong password"
             return
         }

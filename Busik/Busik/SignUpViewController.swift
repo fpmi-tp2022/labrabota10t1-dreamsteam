@@ -52,7 +52,7 @@ class SignUpViewController: UIViewController {
             return
         }
     
-        _userRepository.AddUser(login: login, password: password)
+        _userRepository.AddUser(login: login, password: String(password.hash))
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let secondVC = storyboard.instantiateViewController(identifier: "MainMenuStoryboard")
