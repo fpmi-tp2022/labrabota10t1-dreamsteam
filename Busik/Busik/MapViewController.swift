@@ -29,7 +29,7 @@ class MapViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func findButtonClicked(_ sender: Any) {
-        var request = departurePointTextField.text;
+        let request = departurePointTextField.text;
         
         if(request == nil){
             validationLabel.isHidden = false;
@@ -41,12 +41,14 @@ class MapViewController: UIViewController, UITextFieldDelegate {
             return;
         }
         
-        var locality = _localityRepository.GetLocalityByName(name: request!);
+        validationLabel.isHidden = true;
+        
+        let locality = _localityRepository.GetLocalityByName(name: request!);
         
         var localities: [Locality] = []
         
-        var routes = locality![0].routesFrom!.allObjects as! [Route];
-        for var route in routes{
+        let routes = locality![0].routesFrom!.allObjects as! [Route];
+        for route in routes{
             localities.append(route.to!);
         }
         RefreshAnnotations(localities: localities);
@@ -55,6 +57,18 @@ class MapViewController: UIViewController, UITextFieldDelegate {
     
     func RefreshAnnotations(localities: [Locality]){
         map.removeAnnotations(activeAnnotations);
+        map.reloadInputViews()
+        print(localities)
+        for locality in localities
+        {
+            let loc = MKPointAnnotation();
+            
+            loc.title = locality.name;
+            loc.coordinate = CLLocationCoordinate2D(latitude: locality.latitude, longitude: locality.longitude);
+            map.addAnnotation(loc);
+            activeAnnotations.append(loc);
+        }
+        map.reloadInputViews()
     }
     
     func autoCompleteText(in textField: UITextField, using string: String, suggestionsArray: [String]) -> Bool{
@@ -114,24 +128,24 @@ class MapViewController: UIViewController, UITextFieldDelegate {
         _ridesRepository = RideRepository(contextManager: CtxManager);
         _bookedTicketRepository = BookedTicketRepository(contextManager: CtxManager);
         
-        var localities = _localityRepository.GetLocalities()!;
+        let localities = _localityRepository.GetLocalities()!;
         
-        for var locality in localities{
+        for locality in localities{
             suggestions.append(locality.name!);
         }
         
-        print(suggestions)
+        //print(suggestions)
         
         departurePointTextField.delegate = self;
         
         
         
-        let london = MKPointAnnotation()
+        /*let london = MKPointAnnotation()
         london.title = "London"
         london.coordinate = CLLocationCoordinate2D(latitude: 51.507222, longitude: -0.1275)
         map.addAnnotation(london)
         
-        map.reloadInputViews()
+        map.reloadInputViews()*/
         
         //let initialLocation = CLLocation(latitude: 53.893009, longitude: 27.567444)
         //map.centerToLocation(initialLocation)
