@@ -104,6 +104,7 @@ class RideRepository
         return rides;
     }
     
+
     func GetRides(before: Date, after: Date, fromLocalityName: String, toLocalityName: String) -> [Ride]?{
         let fetchRequest = NSFetchRequest<Ride>(entityName: "Ride");
         
@@ -121,7 +122,7 @@ class RideRepository
         }
         return rides;
     }
-    
+
     func GetRides(fromLocality: Locality) -> [Ride]?{
         
         let fetchRequest = NSFetchRequest<Ride>(entityName: "Ride");
