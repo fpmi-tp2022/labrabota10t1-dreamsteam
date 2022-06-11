@@ -120,7 +120,7 @@ class DataSeeder
     
     public func SeedRides()
     {
-        let route = _routeRepository.GetRoutesFrom(fromLocalityName: "Minsk")![0];
+        /*let route = _routeRepository.GetRoutesFrom(fromLocalityName: "Minsk")![0];
         
         let formatter = DateFormatter();
         //formatter.timeZone = TimeZone(
@@ -128,56 +128,171 @@ class DataSeeder
         let departure = formatter.date(from: "10.06.2022 05:00");
         let arrival = formatter.date(from: "10.06.2022 11:09");
         
-        _rideRepository.AddRide(departureTime: departure!, arrivalTime: arrival!, duration: 309, availiableTickets: 25, price: 19.6, route: route)
+        _rideRepository.AddRide(departureTime: departure!, arrivalTime: arrival!, duration: 309, availiableTickets: 25, price: 19.6, route: route)*/
         
         
         //---------------------------------------------------
         
-        /*let routeMinskBrest = _routeRepository.GetRoute(fromLocalityName: "Minsk", toLocalityName: "Brest");
+        let routeMinskBrest = _routeRepository.GetRoute(fromLocalityName: "Minsk", toLocalityName: "Brest");
+        
+        SeedTimeTableForRoute(route: routeMinskBrest![0], price: 19.5, duration: 228, availiableTickets: 25);
         
         let routeMinskGrodno = _routeRepository.GetRoute(fromLocalityName: "Minsk", toLocalityName: "Grodno");
         
+        SeedTimeTableForRoute(route: routeMinskGrodno![0], price: 14.5, duration: 187, availiableTickets: 30);
+        
         let routeMinskMogilev = _routeRepository.GetRoute(fromLocalityName: "Minsk", toLocalityName: "Mogilev");
+        
+        SeedTimeTableForRoute(route: routeMinskMogilev![0], price: 13, duration: 139, availiableTickets: 20)
         
         let routeMinskVitebsk = _routeRepository.GetRoute(fromLocalityName: "Minsk", toLocalityName: "Vitebsk");
         
+        SeedTimeTableForRoute(route: routeMinskVitebsk![0], price: 15, duration: 197, availiableTickets: 24)
+        
         let routeMinskGomel = _routeRepository.GetRoute(fromLocalityName: "Minsk", toLocalityName: "Gomel");
+        
+        SeedTimeTableForRoute(route: routeMinskGomel![0], price: 19, duration: 213, availiableTickets: 23)
         
         let routeBrestGrodno = _routeRepository.GetRoute(fromLocalityName: "Brest", toLocalityName: "Grodno");
         
+        SeedTimeTableForRoute(route: routeBrestGrodno![0], price: 18, duration: 195, availiableTickets: 22)
+        
         let routeBrestMogilev = _routeRepository.GetRoute(fromLocalityName: "Brest", toLocalityName: "Mogilev");
+        
+        SeedTimeTableForRoute(route: routeBrestMogilev![0], price: 25.5, duration: 338, availiableTickets: 27)
         
         let routeBrestVitebsk = _routeRepository.GetRoute(fromLocalityName: "Brest", toLocalityName: "Vitebsk");
         
+        SeedTimeTableForRoute(route: routeBrestVitebsk![0], price: 40, duration: 407, availiableTickets: 29)
+        
         let routeBrestGomel = _routeRepository.GetRoute(fromLocalityName: "Brest", toLocalityName: "Gomel");
+        
+        SeedTimeTableForRoute(route: routeBrestGomel![0], price: 41, duration: 414, availiableTickets: 20)
         
         let routeGrodnoMogilev = _routeRepository.GetRoute(fromLocalityName: "Grodno", toLocalityName: "Mogilev");
         
+        SeedTimeTableForRoute(route: routeGrodnoMogilev![0], price: 26, duration: 313, availiableTickets: 25)
+        
         let routeGrodnoVitebsk = _routeRepository.GetRoute(fromLocalityName: "Grodno", toLocalityName: "Vitebsk");
+        
+        SeedTimeTableForRoute(route: routeGrodnoVitebsk![0], price: 30.5, duration: 373, availiableTickets: 23)
         
         let routeGrodnoGomel = _routeRepository.GetRoute(fromLocalityName: "Grodno", toLocalityName: "Gomel");
         
+        SeedTimeTableForRoute(route: routeGrodnoGomel![0], price: 27.5, duration: 309, availiableTickets: 25)
+        
         let routeMogilevVitebsk = _routeRepository.GetRoute(fromLocalityName: "Mogilev", toLocalityName: "Vitebsk");
+        
+        SeedTimeTableForRoute(route: routeMogilevVitebsk![0], price: 29.5, duration: 388, availiableTickets: 31)
         
         let routeMogilevGomel = _routeRepository.GetRoute(fromLocalityName: "Mogilev", toLocalityName: "Gomel");
         
+        SeedTimeTableForRoute(route: routeMogilevGomel![0], price: 19, duration: 156, availiableTickets: 23)
+        
         let routeVitebskGomel = _routeRepository.GetRoute(fromLocalityName: "Vitebsk", toLocalityName: "Gomel");
+        
+        SeedTimeTableForRoute(route: routeVitebskGomel![0], price: 23, duration: 264, availiableTickets: 34)
         
         // ------------------------------------------------
         
         
-        let route = _routeRepository.GetRoute(fromLocalityName: "", toLocalityName: "");
+        let routeBrestMinsk = _routeRepository.GetRoute(fromLocalityName: "Brest", toLocalityName: "Minsk");
         
-        let route = _routeRepository.GetRoute(fromLocalityName: "", toLocalityName: "");
+        SeedTimeTableForRoute(route: routeBrestMinsk![0], price: 19.5, duration: 228, availiableTickets: 25);
         
-        let route = _routeRepository.GetRoute(fromLocalityName: "", toLocalityName: "");
+        let routeGrodnoMinsk = _routeRepository.GetRoute(fromLocalityName: "Grodno", toLocalityName: "Minsk");
         
-        let route = _routeRepository.GetRoute(fromLocalityName: "", toLocalityName: "");
+        SeedTimeTableForRoute(route: routeGrodnoMinsk![0], price: 14.5, duration: 187, availiableTickets: 30);
         
-        let route = _routeRepository.GetRoute(fromLocalityName: "", toLocalityName: "");
+        let routeMogilevMinsk = _routeRepository.GetRoute(fromLocalityName: "Mogilev", toLocalityName: "Minsk");
         
-        let route = _routeRepository.GetRoute(fromLocalityName: "", toLocalityName: "");*/
+        SeedTimeTableForRoute(route: routeMogilevMinsk![0], price: 13, duration: 139, availiableTickets: 20)
         
+        let routeVitebskMinsk = _routeRepository.GetRoute(fromLocalityName: "Vitebsk", toLocalityName: "Minsk");
+        
+        SeedTimeTableForRoute(route: routeVitebskMinsk![0], price: 15, duration: 197, availiableTickets: 24)
+        
+        let routeGomelMinsk = _routeRepository.GetRoute(fromLocalityName: "Gomel", toLocalityName: "Minsk");
+        
+        SeedTimeTableForRoute(route: routeGomelMinsk![0], price: 19, duration: 213, availiableTickets: 23)
+        
+        let routeGrodnoBrest = _routeRepository.GetRoute(fromLocalityName: "Grodno", toLocalityName: "Brest");
+        
+        SeedTimeTableForRoute(route: routeGrodnoBrest![0], price: 18, duration: 195, availiableTickets: 22)
+        
+        let routeMogilevBrest = _routeRepository.GetRoute(fromLocalityName: "Mogilev", toLocalityName: "Brest");
+        
+        SeedTimeTableForRoute(route: routeMogilevBrest![0], price: 25.5, duration: 338, availiableTickets: 27)
+        
+        let routeVitebskBrest = _routeRepository.GetRoute(fromLocalityName: "Vitebsk", toLocalityName: "Brest");
+        
+        SeedTimeTableForRoute(route: routeVitebskBrest![0], price: 40, duration: 407, availiableTickets: 29)
+        
+        let routeGomelBrest = _routeRepository.GetRoute(fromLocalityName: "Gomel", toLocalityName: "Brest");
+        
+        SeedTimeTableForRoute(route: routeGomelBrest![0], price: 41, duration: 414, availiableTickets: 20)
+        
+        let routeMogilevGrodno = _routeRepository.GetRoute(fromLocalityName: "Mogilev", toLocalityName: "Grodno");
+        
+        SeedTimeTableForRoute(route: routeMogilevGrodno![0], price: 26, duration: 313, availiableTickets: 25)
+        
+        let routeVitebskGrodno = _routeRepository.GetRoute(fromLocalityName: "Vitebsk", toLocalityName: "Grodno");
+        
+        SeedTimeTableForRoute(route: routeVitebskGrodno![0], price: 30.5, duration: 373, availiableTickets: 23)
+        
+        let routeGomelGrodno = _routeRepository.GetRoute(fromLocalityName: "Gomel", toLocalityName: "Grodno");
+        
+        SeedTimeTableForRoute(route: routeGomelGrodno![0], price: 27.5, duration: 309, availiableTickets: 25)
+        
+        let routeVitebskMogilew = _routeRepository.GetRoute(fromLocalityName: "Vitebsk", toLocalityName: "Mogilev");
+        
+        SeedTimeTableForRoute(route: routeVitebskMogilew![0], price: 29.5, duration: 388, availiableTickets: 31)
+        
+        let routeGomelMogilev = _routeRepository.GetRoute(fromLocalityName: "Gomel", toLocalityName: "Mogilev");
+        
+        SeedTimeTableForRoute(route: routeGomelMogilev![0], price: 19, duration: 156, availiableTickets: 23)
+        
+        let routeGomelVitebsk = _routeRepository.GetRoute(fromLocalityName: "Gomel", toLocalityName: "Vitebsk");
+        
+        SeedTimeTableForRoute(route: routeGomelVitebsk![0], price: 23, duration: 264, availiableTickets: 34)
+    }
+    
+    private func SeedTimeTableForRoute(route: Route, price: Float, duration: Int32, availiableTickets: Int32)
+    {
+        let days = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+        let calendar = Calendar.current;
+        
+        for month in 6...7
+        {
+            for day in 1...days[month - 1]
+            {
+                let formatter = DateFormatter();
+                formatter.dateFormat = "dd.MM.yyyy HH:mm";
+                let stringDateFormat = "%d.%d.2022 00:01";
+                let stringDate = String(format: stringDateFormat, day, month);
+                var departure: Date! = formatter.date(from: stringDate);
+                while(true)
+                {
+                    let delta = Int.random(in: 150...270);
+                    departure = calendar.date(byAdding: .minute, value: delta, to: departure);
+                    
+                    let dateFormatter = DateFormatter();
+                    dateFormatter.dateFormat = "dd";
+                    
+                    let dayDep = Int(dateFormatter.string(from: departure))!;
+                    
+                    if(dayDep != day){
+                        break;
+                    }
+                    
+                    let arrival = calendar.date(byAdding: .minute, value: Int(duration), to: departure);
+                    
+                    let priceDelta = Float.random(in: -2...2)
+                    
+                    _rideRepository.AddRide(departureTime: departure, arrivalTime: arrival!, duration: duration, availiableTickets: availiableTickets, price: price + priceDelta, route: route);
+                }
+            }
+        }
     }
     
     

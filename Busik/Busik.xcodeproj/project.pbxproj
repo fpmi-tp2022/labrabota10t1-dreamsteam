@@ -14,6 +14,13 @@
 		7722180A2852564900884076 /* BookedTicket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772218092852564900884076 /* BookedTicket.swift */; };
 		77C61E0228513B2A00311804 /* LocalityRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77C61E0128513B2A00311804 /* LocalityRepository.swift */; };
 		77C61E072851447E00311804 /* RouteRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77C61E062851447E00311804 /* RouteRepository.swift */; };
+		2EAF25172850FAEE000F60B9 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EAF25162850FAED000F60B9 /* MapKit.framework */; };
+		2EAF25192850FC58000F60B9 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EAF25182850FC58000F60B9 /* MapViewController.swift */; };
+		772218052852496C00884076 /* RideRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772218042852496C00884076 /* RideRepository.swift */; };
+		7722180A2852564900884076 /* BookedTicket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772218092852564900884076 /* BookedTicket.swift */; };
+		772B233C285498DB0066C15E /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772B233B285498DB0066C15E /* Map.swift */; };
+		77C61E0228513B2A00311804 /* LocalityRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77C61E0128513B2A00311804 /* LocalityRepository.swift */; };
+		77C61E072851447E00311804 /* RouteRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77C61E062851447E00311804 /* RouteRepository.swift */; };
 		77E5457F2846562900BA3924 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77E5457E2846562900BA3924 /* AppDelegate.swift */; };
 		77E545812846562900BA3924 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77E545802846562900BA3924 /* SceneDelegate.swift */; };
 		77E545832846562900BA3924 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77E545822846562900BA3924 /* SignInViewController.swift */; };
@@ -65,6 +72,13 @@
 		772218092852564900884076 /* BookedTicket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookedTicket.swift; sourceTree = "<group>"; };
 		77C61E0128513B2A00311804 /* LocalityRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalityRepository.swift; sourceTree = "<group>"; };
 		77C61E062851447E00311804 /* RouteRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteRepository.swift; sourceTree = "<group>"; };
+		2EAF25162850FAED000F60B9 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		2EAF25182850FC58000F60B9 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		772218042852496C00884076 /* RideRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RideRepository.swift; sourceTree = "<group>"; };
+		772218092852564900884076 /* BookedTicket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookedTicket.swift; sourceTree = "<group>"; };
+		772B233B285498DB0066C15E /* Map.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
+		77C61E0128513B2A00311804 /* LocalityRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalityRepository.swift; sourceTree = "<group>"; };
+		77C61E062851447E00311804 /* RouteRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteRepository.swift; sourceTree = "<group>"; };
 		77E5457B2846562900BA3924 /* Busik.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Busik.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		77E5457E2846562900BA3924 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		77E545802846562900BA3924 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -102,6 +116,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2EAF25172850FAEE000F60B9 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -122,6 +137,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2EAF25152850FAED000F60B9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2EAF25162850FAED000F60B9 /* MapKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		772B231F2854936E0066C15E /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				772B233B285498DB0066C15E /* Map.swift */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
 		77E545722846562900BA3924 = {
 			isa = PBXGroup;
 			children = (
@@ -129,6 +160,7 @@
 				77E545972846562A00BA3924 /* BusikTests */,
 				77E545A22846562A00BA3924 /* BusikUITests */,
 				77E5457C2846562900BA3924 /* Products */,
+				2EAF25152850FAED000F60B9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -145,6 +177,7 @@
 		77E5457D2846562900BA3924 /* Busik */ = {
 			isa = PBXGroup;
 			children = (
+				772B231F2854936E0066C15E /* Map */,
 				77E5465528467FBF00BA3924 /* DataSeeding */,
 				77E5464F28467DD300BA3924 /* Types */,
 				77E546492846717000BA3924 /* Repositories */,
@@ -153,6 +186,7 @@
 				77E545EC284666B300BA3924 /* Busik.xcdatamodeld */,
 				77E5457E2846562900BA3924 /* AppDelegate.swift */,
 				77E545802846562900BA3924 /* SceneDelegate.swift */,
+				2EAF25182850FC58000F60B9 /* MapViewController.swift */,
 				77E545822846562900BA3924 /* SignInViewController.swift */,
 				22849F8B28529AAD00DEC5F9 /* SearchViewController.swift */,
 				77E545842846562900BA3924 /* Main.storyboard */,
@@ -382,7 +416,9 @@
 				77C61E0228513B2A00311804 /* LocalityRepository.swift in Sources */,
 				77E5463D2846714B00BA3924 /* BookedTicket+CoreDataProperties.swift in Sources */,
 				77C61E072851447E00311804 /* RouteRepository.swift in Sources */,
+				2EAF25192850FC58000F60B9 /* MapViewController.swift in Sources */,
 				77E546452846714B00BA3924 /* Locality+CoreDataProperties.swift in Sources */,
+				772B233C285498DB0066C15E /* Map.swift in Sources */,
 				77E545832846562900BA3924 /* SignInViewController.swift in Sources */,
 				77E546412846714B00BA3924 /* Route+CoreDataProperties.swift in Sources */,
 				2EAF2510284FD083000F60B9 /* SignUpViewController.swift in Sources */,
@@ -569,7 +605,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Busik/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -587,7 +625,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Busik/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
