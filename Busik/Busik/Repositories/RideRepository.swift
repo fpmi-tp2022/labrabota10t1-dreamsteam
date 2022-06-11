@@ -50,10 +50,10 @@ class RideRepository
         return rides;
     }
     
-    func GetRides(after: Date) -> [Ride]?{
+    func GetRides(from: Date) -> [Ride]?{
         let fetchRequest = NSFetchRequest<Ride>(entityName: "Ride");
         
-        let predicate = NSPredicate(format: "departureTime > %@", after as CVarArg);
+        let predicate = NSPredicate(format: "departureTime >= %@", from as CVarArg);
         
         fetchRequest.predicate = predicate;
         
@@ -68,10 +68,10 @@ class RideRepository
         return rides;
     }
     
-    func GetRides(before: Date) -> [Ride]?{
+    func GetRides(to: Date) -> [Ride]?{
         let fetchRequest = NSFetchRequest<Ride>(entityName: "Ride");
         
-        let predicate = NSPredicate(format: "departureTime < %@", before as CVarArg);
+        let predicate = NSPredicate(format: "departureTime <= %@", to as CVarArg);
         
         fetchRequest.predicate = predicate;
         
@@ -86,10 +86,10 @@ class RideRepository
         return rides;
     }
     
-    func GetRides(before: Date, after: Date) -> [Ride]?{
+    func GetRides(from: Date, to: Date) -> [Ride]?{
         let fetchRequest = NSFetchRequest<Ride>(entityName: "Ride");
         
-        let predicate = NSPredicate(format: "departureTime < %@ and departureTime > %@", before as CVarArg, after as CVarArg);
+        let predicate = NSPredicate(format: "departureTime => %@ and departureTime <= %@", from as CVarArg, to as CVarArg);
         
         fetchRequest.predicate = predicate;
         
@@ -104,10 +104,10 @@ class RideRepository
         return rides;
     }
 
-    func GetRides(before: Date, after: Date, fromLocalityName: String, toLocalityName: String) -> [Ride]?{
+    func GetRides(from: Date, to: Date, fromLocalityName: String, toLocalityName: String) -> [Ride]?{
         let fetchRequest = NSFetchRequest<Ride>(entityName: "Ride");
         
-        let predicate = NSPredicate(format: "departureTime <= %@ and departureTime >= %@ and route.to = %@ and route.from = %@", before as CVarArg, after as CVarArg, toLocalityName, fromLocalityName);
+        let predicate = NSPredicate(format: "departureTime >= %@ and departureTime <= %@ and route.to.name = %@ and route.from.name = %@", from as CVarArg, to as CVarArg, toLocalityName, fromLocalityName);
         
         fetchRequest.predicate = predicate;
         
@@ -160,9 +160,22 @@ class RideRepository
         return rides;
     }
     
-    func GetRides(fromLocality: Locality, toLocality: Locality, before: Date, after: Date) -> [Ride]?{
-        //TODO:
+    func GetRides(from: Date, to: Date, fromLocality: Locality, toLocality: Locality) -> [Ride]?
+    {
+        let fetchRequest = NSFetchRequest<Ride>(entityName: "Ride");
+        
+        let predicate = NSPredicate(format: "departureTime >= %@ and departureTime <= %@ and route.to.name = %@ and route.from.name = %@", from as CVarArg, to as CVarArg, toLocality.name!, fromLocality.name!);
+        
+        fetchRequest.predicate = predicate;
+        
         var rides: [Ride]? = nil
+        
+        do{
+            try rides = _ctxManager.Context.fetch(fetchRequest);
+        }
+        catch let error as NSError{
+            print("Get rides request failed with error: \(error)");
+        }
         return rides;
     }
     
