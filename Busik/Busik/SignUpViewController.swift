@@ -11,6 +11,7 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var errorField: UILabel!
+    @IBOutlet weak var signupButton: UIButton!
     @IBOutlet weak var repeatPasswordTextField: UITextField!
     
     public var CtxManager: ContextManager!;
@@ -18,6 +19,9 @@ class SignUpViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        signupButton.layer.cornerRadius = 20
+        signupButton.layer.borderWidth = 2
+        signupButton.layer.borderColor = UIColor.systemGreen.cgColor
         
         let ctx = ContextRetriever.RetrieveContext();
         CtxManager = ContextManager(context: ctx);

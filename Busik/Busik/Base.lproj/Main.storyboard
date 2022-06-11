@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina5_5" orientation="portrait" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -35,19 +36,13 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ML3-Nf-aaz">
-                                <rect key="frame" x="20" y="446" width="374" height="62"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" name="AccentColor"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <action selector="signInButtonClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1Km-Bk-EvF"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I1N-CC-0ni">
-                                <rect key="frame" x="158" y="543" width="98" height="31"/>
+                                <rect key="frame" x="143" y="550" width="128" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="Create account">
+                                    <color key="titleColor" systemColor="systemGreenColor"/>
+                                </state>
                                 <connections>
                                     <action selector="signUpButoonClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="euS-4W-wsI"/>
                                 </connections>
@@ -59,6 +54,18 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ML3-Nf-aaz">
+                                <rect key="frame" x="20" y="460" width="374" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemIndigoColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <state key="normal" title="Sign In">
+                                    <color key="titleColor" systemColor="systemGreenColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="signInButtonClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1Km-Bk-EvF"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -67,11 +74,12 @@
                         <outlet property="emailTextField" destination="AyL-V8-mDL" id="9n6-2c-j50"/>
                         <outlet property="errorField" destination="77X-On-nkA" id="859-sk-bC6"/>
                         <outlet property="passwordTextField" destination="VL6-cg-swJ" id="kgR-tI-GgI"/>
+                        <outlet property="signinButton" destination="ML3-Nf-aaz" id="kMh-tH-4JS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="28.985507246376812" y="68.973214285714278"/>
+            <point key="canvasLocation" x="28.985507246376812" y="68.478260869565219"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="YWR-EZ-Po1">
@@ -100,10 +108,13 @@
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YPy-5K-4PC">
-                                <rect key="frame" x="20" y="463" width="374" height="53"/>
+                                <rect key="frame" x="20" y="460" width="374" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" name="AccentColor"/>
-                                <state key="normal" title="Button"/>
+                                <color key="backgroundColor" systemColor="systemIndigoColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <state key="normal" title="Sign Up">
+                                    <color key="titleColor" systemColor="systemGreenColor"/>
+                                </state>
                                 <connections>
                                     <action selector="signUpButtonClicked:" destination="h6H-LV-HU0" eventType="touchUpInside" id="V7s-rF-1gB"/>
                                 </connections>
@@ -115,14 +126,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tYI-Ae-1wY">
-                                <rect key="frame" x="147" y="555" width="120" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <action selector="signInButtonClicked:" destination="h6H-LV-HU0" eventType="touchUpInside" id="vH3-Xc-xIP"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="osd-u2-u2g">
                                 <rect key="frame" x="20" y="636" width="374" height="73"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -130,6 +133,17 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tYI-Ae-1wY">
+                                <rect key="frame" x="147" y="550" width="120" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="Back to sign in">
+                                    <color key="titleColor" systemColor="systemGreenColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="signInButtonClicked:" destination="h6H-LV-HU0" eventType="touchUpInside" id="vH3-Xc-xIP"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Udv-ev-kL9"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -139,6 +153,7 @@
                         <outlet property="errorField" destination="osd-u2-u2g" id="5ht-EH-uyQ"/>
                         <outlet property="passwordTextField" destination="k9R-kc-j00" id="IwL-M3-cXb"/>
                         <outlet property="repeatPasswordTextField" destination="4Bj-K2-VOD" id="QpK-O6-slO"/>
+                        <outlet property="signupButton" destination="YPy-5K-4PC" id="MQP-5X-bDv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7oV-ug-fLv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -328,6 +343,12 @@
         </systemColor>
         <systemColor name="systemBlueColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemIndigoColor">
+            <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemRedColor">
             <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

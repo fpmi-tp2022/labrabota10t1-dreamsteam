@@ -12,6 +12,7 @@ class SignInViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var errorField: UILabel!
+    @IBOutlet weak var signinButton: UIButton!
     
     public var CtxManager: ContextManager!;
     var _userRepository: UserRepository!;
@@ -22,6 +23,10 @@ class SignInViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        signinButton.layer.cornerRadius = 20
+        signinButton.layer.borderWidth = 2
+        signinButton.layer.borderColor = UIColor.systemGreen.cgColor
         // Do any additional setup after loading the view.
         
         //TODO: remove db initialization to erlier executed function if it appears
