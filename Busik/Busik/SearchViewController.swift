@@ -105,6 +105,4 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
         timetableController!.FillTableWithData(beforeDate, afterDate, cityFrom, cityTo)
     }
     
-    
-    
 }

@@ -22,6 +22,26 @@ class BusikTests: XCTestCase {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
+    
+    func test_security_password_hash_valid() throws
+    {
+        let password = "1e_dg_tr75";
+        let hashedPassword = String(password.hash);
+        
+        let isValid = PasswordComparer.Compare(coming: password, stored: hashedPassword);
+        
+        XCTAssertTrue(isValid)
+    }
+    
+    func test_security_password_hash_invalid() throws
+    {
+        let password = "1e_dg_tr75";
+        let hashedPassword = String(password.hash + 1);
+        
+        let isValid = PasswordComparer.Compare(coming: password, stored: hashedPassword);
+        
+        XCTAssertFalse(isValid);
+    }
 
     func testPerformanceExample() throws {
         // This is an example of a performance test case.
