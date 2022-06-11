@@ -8,14 +8,14 @@
 import UIKit
 import MapKit
 
-class MapViewController: UIViewController, UITextFieldDelegate {
+class MapViewController: UIViewController, UITextFieldDelegate, MKMapViewDelegate {
 
     @IBOutlet weak var departurePointTextField: UITextField!
     @IBOutlet weak var map: MKMapView!
     
     @IBOutlet weak var validationLabel: UILabel!
     var suggestions: [String]! = []
-    var activeAnnotations: [MKAnnotation]! = []
+    var activeAnnotations: [Artwork]! = []
     
     public var CtxManager: ContextManager!;
     var _userRepository: UserRepository!;
@@ -51,22 +51,34 @@ class MapViewController: UIViewController, UITextFieldDelegate {
         for route in routes{
             localities.append(route.to!);
         }
-        RefreshAnnotations(localities: localities);
+        RefreshAnnotations(localities: localities, departure: locality![0]);
         
     }
     
-    func RefreshAnnotations(localities: [Locality]){
+    func RefreshAnnotations(localities: [Locality], departure: Locality){
         map.removeAnnotations(activeAnnotations);
         map.reloadInputViews()
         print(localities)
+        
+        let coordDep = CLLocationCoordinate2D(latitude: departure.latitude, longitude: departure.longitude);
+        
+        let loc = Artwork(title: departure.name, locationName: departure.name! + ", Belarus", discipline: "Departure", coordinate: coordDep)
+        
+        map.addAnnotation(loc);
+        activeAnnotations.append(loc);
+        
         for locality in localities
         {
-            let loc = MKPointAnnotation();
+            var desc = locality.name! + ", Belarus";
+            var coord = CLLocationCoordinate2D(latitude: locality.latitude, longitude: locality.longitude);
+            let loc2 = Artwork(title: locality.name, locationName: desc, discipline: "Arrival", coordinate: coord)
+            
+            /*let loc = MKPointAnnotation();
             
             loc.title = locality.name;
-            loc.coordinate = CLLocationCoordinate2D(latitude: locality.latitude, longitude: locality.longitude);
-            map.addAnnotation(loc);
-            activeAnnotations.append(loc);
+            loc.coordinate = CLLocationCoordinate2D(latitude: locality.latitude, longitude: locality.longitude);*/
+            map.addAnnotation(loc2);
+            activeAnnotations.append(loc2);
         }
         map.reloadInputViews()
     }
@@ -119,6 +131,11 @@ class MapViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        map.delegate = self;
+        map.register(
+          ArtworkMarkerView.self,
+          forAnnotationViewWithReuseIdentifier:
+            "artwork")
         
         let ctx = ContextRetriever.RetrieveContext();
         CtxManager = ContextManager(context: ctx);
@@ -150,6 +167,48 @@ class MapViewController: UIViewController, UITextFieldDelegate {
         //let initialLocation = CLLocation(latitude: 53.893009, longitude: 27.567444)
         //map.centerToLocation(initialLocation)
 
+    }
+    
+    func mapView(
+        _ mapView: MKMapView,
+        viewFor annotation: MKAnnotation
+      ) -> MKAnnotationView? {
+        print("in annot view")
+        // 2
+        guard let annotation = annotation as? Artwork else {
+          return nil
+        }
+        // 3
+        let identifier = "artwork"
+        var view: MKMarkerAnnotationView
+        // 4
+        if let dequeuedView = mapView.dequeueReusableAnnotationView(
+          withIdentifier: identifier) as? MKMarkerAnnotationView {
+            print("MkMarkerAnnotView")
+          dequeuedView.annotation = annotation
+          view = dequeuedView
+        } else {
+          // 5
+          view = MKMarkerAnnotationView(
+            annotation: annotation,
+            reuseIdentifier: identifier)
+          view.canShowCallout = true
+          view.calloutOffset = CGPoint(x: -5, y: 5)
+          view.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+        }
+        return view
+      }
+    
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+
+        if let routePolyline = overlay as? MKPolyline {
+            let renderer = MKPolylineRenderer(polyline: routePolyline)
+            renderer.strokeColor = UIColor.blue
+            renderer.lineWidth = 7
+            return renderer
+        }
+
+        return MKOverlayRenderer()
     }
     
 }

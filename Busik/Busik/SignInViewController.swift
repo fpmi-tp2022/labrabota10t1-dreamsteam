@@ -44,11 +44,11 @@ class SignInViewController: UIViewController {
     }
     
     @IBAction func signInButtonClicked(_ sender: Any) {
-        if (UserDefaults.standard.string(forKey: "password") != passwordTextField.text!) ||
+        /*if (UserDefaults.standard.string(forKey: "password") != passwordTextField.text!) ||
             (UserDefaults.standard.string(forKey: "username") != emailTextField.text!) {
             passwordTextField.text = "Wrong password or name"
             return
-        }
+        }*/
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let secondVC = storyboard.instantiateViewController(identifier: "MainMenuStoryboard")
