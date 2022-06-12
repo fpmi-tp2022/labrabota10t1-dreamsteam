@@ -1,73 +1,88 @@
-# Requirements
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
 
-## Authorization & authentification
+.topnav {
+  overflow: hidden;
+  background-color: #333;
+}
 
-Sign In:
-- proceed to main page in case of success
-- show error in case of failure
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 30px 36px;
+  text-decoration: none;
+  font-size: 17px;
+}
 
-Sign Up:
-- check uniqueness of login
-- compare `password` and `repeated password`
-- proceed to main page in case of success
-- show error in case of failure
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
 
-## Search Page (Main page)
+.topnav a.active {
+  background-color: #38cc33;
+  color: white;
+}
+</style>
+</head>
+<body>
 
-- show filter bar at the top (_locality from_ and _locality to_ - 2 text fileds, 2 date pickers for _date range_)
-- show search button
-- show results in table view with customized cells, containing info about tickets
-- provide possibility to book ticket
+<div class="topnav">
+  <a href="index.html">Home</a>
+  <a href="database.html">Database</a>
+  <a class="active" href="file_giagram.html">Files</a>
+  <a href="requirements.html">Requirements</a>
+</div>
+  
+<div data-view-component="true" class="Layout-main">          <div id="wiki-body" class="gollum-markdown-content">
+  <div class="markdown-body">
+    <table role="table">
+<tbody><tr>
+<td width="50%" style="padding: 40px 40px 40px 40px;"><img src="https://user-images.githubusercontent.com/75540967/173224649-853e3131-e358-4a95-b1db-502876f2246e.png" width="100%"></td>
+<td width="50%" style="padding-left: 50px;"> 
+Main folders:
+<ol>
+<li>Busik - project</li>
+<li>BusikTests - unit tests</li>
+<li>BusikUITests - ui tests</li>
+</ol>
+<p>In Busik:</p>
+<ul>
+<li>Security</li>
+<li>Map (cutomization of annotation)</li>
+<li>Types</li>
+<li>Repositories (methods to work with entities - select, insert ...)</li>
+<li>DataModels (entities)</li>
+<li>DataBase (abstraction to work with Context)</li>
+</ul>
+<p>+Controllers, storyboards, AppDelegate</p>
+</td>
+</tr>
+<tr>
+<td width="50%" style="padding: 40px 40px 40px 40px;"><img src="https://user-images.githubusercontent.com/75540967/173224656-925b4ad5-9460-498c-bb31-3a326df80084.png" width="100%"></td>
+<td width="50%"></td>
+</tr>
+</tbody></table>
 
-## Map page
+  </div>
 
-- show map
-- show text field for _departure point_
-- show find button
-- show error if no locality with entered name exists
-- if entered locality exists - show it as **D** - departure on the map and available localities to as **A** - arrival
+  <div id="wiki-footer" class="mt-5 Link--muted wiki-footer">
+    <a class="d-block p-3 Link--muted text-center border border-dashed rounded-2" href="/fpmi-tp2022/labrabota10t1-dreamsteam/wiki/_new?wiki%5Bname%5D=_Footer">
+      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-plus mr-1">
+<path fill-rule="evenodd" d="M7.75 2a.75.75 0 01.75.75V7h4.25a.75.75 0 110 1.5H8.5v4.25a.75.75 0 11-1.5 0V8.5H2.75a.75.75 0 010-1.5H7V2.75A.75.75 0 017.75 2z"></path>
+</svg> Add a custom footer
+</a>              </div>
+</div>
+</div>
 
-## Booked Ticket Page
-
-- show booked tickets as table view
-- in customized cell show all info about ticket
-- make it possible to unbook ticket if it is still actual
-
-## Navigation
-
-- provide an app with a menu bar (Search Page, Map Page, Booked Ticket Page)
-
-# User stories
-
-## Authorization & authentification
-
-As a <b>user</b>, I want to <b>sign up</b>, so that I can <b>use your app further</b>
-
-As a <b>user</b>, I want to <b>sign in</b>, so that I can <b>use your app</b>
-
-## Search Page (Main page)
-
-As a <b>user</b>, I want to <b>view tickets</b>, so that I can <b>choose appropriate one</b>
-
-As a <b>user</b>, I want to <b>filter tickets</b>, so that I can <b>easier find appropriate one</b>
-
-As a <b>user</b>, I want to <b>book chosen ticket</b>, so that I can <b>buy it later</b>
-
-## Map page
-
-As a <b>user</b>, I want to <b>see available directions from chosen locality</b>, so that I can <b>know, where I can get</b>
-
-## Booked Ticket Page
-
-As a <b>user</b>, I want to <b>see booked tickets</b>, so that I can <b>make sure I booked them</b>
-
-As a <b>user</b>, I want to <b>unbook tickets I do not need (if it is available)</b>, so that <b>other people can use them</b>
-
-## Navigation
-
-As a <b>user</b>, I want to <b>navigate through pages</b>, so that I can <b>get all information</b>
-
-# Use case Diagram
-
-<img src="https://user-images.githubusercontent.com/75540967/173223863-0156f530-ff07-419b-beab-6b1384b21a13.png" height="600px">
+</body>
+</html>
 
