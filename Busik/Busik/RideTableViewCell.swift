@@ -16,8 +16,8 @@ class RideTableViewCell: UITableViewCell {
     public func constructFromRide(ride: Ride) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH:mm"
-        departureLabel.text = dateFormatter.string(from: ride.departureTime!)
         dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
+        departureLabel.text = dateFormatter.string(from: ride.departureTime!)
         arrivalLabel.text  = dateFormatter.string(from: ride.arrivalTime!)
         durationLabel.text = String(ride.duration) + " min"
         priceLabel.text = String(format: "%.2fр", ride.price)

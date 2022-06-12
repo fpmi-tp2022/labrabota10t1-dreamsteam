@@ -17,11 +17,15 @@ class TimetableViewController : NSObject, UITableViewDataSource, UITableViewDele
     var _ridesRepository: RideRepository!;
     var _bookedTicketRepository: BookedTicketRepository!;
     
+    var cal = Calendar.current
+    
     var timetable: UITableView
     var errorLabel: UILabel
     
     let CELL_ID = "RideTableViewCell"
     var items = [Ride]()
+    var sections = [String]()
+    var numSections = [Int]()
     
     init(timetable: UITableView, errorLabel: UILabel) {
         let ctx = ContextRetriever.RetrieveContext();
@@ -34,12 +38,28 @@ class TimetableViewController : NSObject, UITableViewDataSource, UITableViewDele
         
         self.timetable = timetable
         self.errorLabel = errorLabel
+        cal.timeZone = TimeZone(identifier: "UTC")!
+        
         let nib = UINib(nibName: CELL_ID, bundle: nil)
         timetable.register(nib, forCellReuseIdentifier: CELL_ID)
     }
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return sections.count
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if section >= sections.count {
+            return nil
+        }
+        return sections[section]
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return items.count;
+        if section >= numSections.count {
+            return 0
+        }
+        return numSections[section];
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -58,6 +78,11 @@ class TimetableViewController : NSObject, UITableViewDataSource, UITableViewDele
     public func FillTableWithData(_ beforeDate: Date, _ afterDate: Date, _ cityFromName: String, _ cityToName : String){
         let cityFrom = _localityRepository.GetLocalityByName(name: cityFromName)
         let cityTo = _localityRepository.GetLocalityByName(name: cityToName)
+        
+        errorLabel.text = ""
+        sections.removeAll()
+        numSections.removeAll()
+        items.removeAll()
         if cityFrom == nil || cityTo == nil {
             errorLabel.text = "Internal error"
             return
@@ -72,13 +97,35 @@ class TimetableViewController : NSObject, UITableViewDataSource, UITableViewDele
         }
         
         let data = _ridesRepository.GetRides(from: beforeDate, to: afterDate, fromLocality: cityFrom!.first!, toLocality: cityTo!.first!)
-        if data == nil{
+        if data == nil {
             errorLabel.text = "Internal error"
             return
         }
         if data!.isEmpty {
             errorLabel.text = "No results found"
+            return
         }
+        
+        var curCount = 0
+        var curDate : Date = data![0].departureTime!
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd MMMM"
+        dateFormatter.timeZone = cal.timeZone
+        
+        
+        for ride in data! {
+            if .orderedSame != cal.compare(curDate, to: ride.departureTime!, toGranularity: .day) {
+                sections.append(dateFormatter.string(from: curDate)) // add name for a prev section
+                numSections.append(curCount) // add rows count for a prev section
+                curCount = 1
+                curDate = ride.departureTime!
+            } else {
+                curCount += 1
+            }
+        }
+        sections.append(dateFormatter.string(from: curDate)) // add last section
+        numSections.append(curCount) // add last section
+        
         items = data!
         DispatchQueue.main.async {
            self.timetable.reloadData()

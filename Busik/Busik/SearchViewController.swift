@@ -33,6 +33,8 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
     private var beforeDate: Date = Date()
     private var afterDate: Date = Date()
     
+    var cal = Calendar.current
+    
     private var timetableController : TimetableViewController?  = nil
     
     override func viewDidLoad() {
@@ -61,12 +63,13 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
         fromTextField.delegate = self
         toTextField.delegate = self
         
+        cal.timeZone = TimeZone(identifier: "UTC")!
         beforeDatePicker.timeZone = TimeZone.init(abbreviation: "UTC")
         afterDatePicker.timeZone = TimeZone.init(abbreviation: "UTC")
-        beforeDate = Calendar.current.date(bySettingHour: 0, minute: 0, second: 0, of: beforeDatePicker.date)!
-        afterDate = Calendar.current.date(bySettingHour: 0, minute: 0, second: 0, of: afterDatePicker.date)!
+        beforeDate = cal.date(bySettingHour: 0, minute: 0, second: 0, of: beforeDatePicker.date)!
+        afterDate = cal.date(bySettingHour: 23, minute: 59, second: 59, of: afterDatePicker.date)!
         
-        timetableController!.FillTableWithData(Date(), Date(), "Minsk", "Brest")
+        //timetableController!.FillTableWithData(Date(), Date(), "Minsk", "Brest")
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool{
@@ -100,8 +103,9 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
     @IBAction func buttonSearchClicked(_ sender: Any) {
         cityFrom = fromTextField.text!
         cityTo = toTextField.text!
-        beforeDate = Calendar.current.date(bySettingHour: 0, minute: 0, second: 0, of: beforeDatePicker.date)!
-        afterDate = Calendar.current.date(bySettingHour: 0, minute: 0, second: 0, of: afterDatePicker.date)!
+        
+        beforeDate = cal.date(bySettingHour: 0, minute: 0, second: 0, of: beforeDatePicker.date)!
+        afterDate = cal.date(bySettingHour: 23, minute: 59, second: 59, of: afterDatePicker.date)!
         timetableController!.FillTableWithData(beforeDate, afterDate, cityFrom, cityTo)
     }
     
