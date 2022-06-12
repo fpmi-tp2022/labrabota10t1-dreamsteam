@@ -54,7 +54,6 @@ class MapViewController: UIViewController, UITextFieldDelegate, MKMapViewDelegat
             localities.append(route.to!);
         }
         RefreshAnnotations(localities: localities, departure: locality![0]);
-        
     }
     
     func RefreshAnnotations(localities: [Locality], departure: Locality){
@@ -160,6 +159,7 @@ class MapViewController: UIViewController, UITextFieldDelegate, MKMapViewDelegat
         departurePointTextField.attributedPlaceholder = NSAttributedString(
             string: NSLocalizedString("DEPARTURE_POINT", comment: ""),
             attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
+        validationLabel.text = NSLocalizedString("DEPARTURE_NOT_FOUND", comment: "")
     }
     
     func mapView(

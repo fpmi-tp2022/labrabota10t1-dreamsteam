@@ -29,9 +29,11 @@ class SignUpViewController: UIViewController {
         CtxManager = ContextManager(context: ctx);
         _userRepository = UserRepository(contextManager: CtxManager);
         
-        let signUpText = NSLocalizedString("SIGN_UP", comment: "")
-        signUpLabel.text = signUpText
-        signupButton.setTitle(signUpText, for: .normal)
+        errorField.lineBreakMode = .byWordWrapping
+        errorField.numberOfLines = 0
+        
+        signUpLabel.text = NSLocalizedString("SIGN_UP2", comment: "")
+        signupButton.setTitle(NSLocalizedString("SIGN_UP", comment: ""), for: .normal)
         backToSignInButton.setTitle(NSLocalizedString("BACK_TO_SIGN_IN", comment: ""), for: .normal)
         passwordTextField.attributedPlaceholder = NSAttributedString(
             string: NSLocalizedString("PASSWORD", comment: ""),

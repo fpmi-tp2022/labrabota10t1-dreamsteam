@@ -15,6 +15,7 @@ class SignInViewController: UIViewController {
     @IBOutlet weak var signinButton: UIButton!
     @IBOutlet weak var createAccountButton: UIButton!
     @IBOutlet weak var signInLabel: UILabel!
+    @IBOutlet weak var languageSegmentedControl: UISegmentedControl!
     
     public var CtxManager: ContextManager!;
     var _userRepository: UserRepository!;
@@ -50,6 +51,9 @@ class SignInViewController: UIViewController {
         //dataSeeder.SeedRides();
         //dataSeeder.SeedBookedTickets();
         
+        errorField.lineBreakMode = .byWordWrapping
+        errorField.numberOfLines = 0
+        
         let signInText = NSLocalizedString("SIGN_IN", comment: "")
         signInLabel.text = signInText
         signinButton.setTitle(signInText, for: .normal)
@@ -57,6 +61,8 @@ class SignInViewController: UIViewController {
         passwordTextField.attributedPlaceholder = NSAttributedString(
             string: NSLocalizedString("PASSWORD", comment: ""),
             attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
+        
+        UpdateLanguageSegmentedControl()
     }
     
     @IBAction func signInButtonClicked(_ sender: Any) {
@@ -101,6 +107,62 @@ class SignInViewController: UIViewController {
         secondVC.modalTransitionStyle = .crossDissolve
         
         present(secondVC, animated: true, completion: nil)
+    }
+    
+    @IBAction func LanguageChanged(_ sender: Any) {
+        switch languageSegmentedControl.selectedSegmentIndex{
+        case 0:
+            setLanguage(languageCode: "en")
+            break
+        case 1:
+            setLanguage(languageCode: "be-BY")
+            break
+        case 2:
+            setLanguage(languageCode: "ru")
+            break
+        default:
+            break
+        }
+        
+        errorField.text = NSLocalizedString("LANGUAGE_WARNING", comment: "")
+    }
+    
+    func setLanguage(languageCode:String) {
+        var appleLanguages = UserDefaults.standard.object(forKey: "AppleLanguages") as! [String]
+        appleLanguages.remove(at: 0)
+        appleLanguages.insert(languageCode, at: 0)
+        UserDefaults.standard.set(appleLanguages, forKey: "AppleLanguages")
+        UserDefaults.standard.synchronize() //needs restrat
+        
+        Bundle.main.path(forResource: languageCode, ofType: "lproj")
+    }
+    
+    func getLanguage() -> String {
+        let appleLanguages = UserDefaults.standard.object(forKey: "AppleLanguages") as! [String]
+        let prefferedLanguage = appleLanguages[0]
+        if prefferedLanguage.contains("-") {
+            let array = prefferedLanguage.components(separatedBy: "-")
+            return array[0]
+        }
+        return prefferedLanguage
+    }
+    
+    func UpdateLanguageSegmentedControl(){
+        let currentLanguage = getLanguage()
+        
+        switch currentLanguage{
+        case "en":
+            languageSegmentedControl.selectedSegmentIndex = 0
+            break
+        case "be":
+            languageSegmentedControl.selectedSegmentIndex = 1
+            break
+        case "ru":
+            languageSegmentedControl.selectedSegmentIndex = 2
+            break
+        default:
+            break
+        }
     }
 }
 

@@ -12,6 +12,7 @@
 "WRONG_PASSWORD" = "Wrong password";
 "SIGN_IN" = "Sign In";
 "SIGN_UP" = "Sign Up";
+"SIGN_UP2" = "Sign Up";
 "CREATE_ACCOUNT" = "Create account";
 "BACK_TO_SIGN_IN" = "Back to sign in";
 "DIFFERENT_PASSWORDS" = "Different passwords";
@@ -29,3 +30,9 @@
 "FROM" = "From:";
 "TO" = "To:";
 "DEPARTURE_POINT" = "Departure point";
+"LANGUAGE_WARNING" = "To apply the language, restart the application";
+"DEPARTURE_NOT_FOUND" = "Selected departure point not found";
+"INTERNAL_ERROR" = "Internal error";
+"FROM_NOT_FOUND" = "City from is not found";
+"TO_NOT_FOUND" = "City to is not found";
+"NO_RESULTS_FOUND" = "No results found";

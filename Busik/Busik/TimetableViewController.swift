@@ -59,25 +59,25 @@ class TimetableViewController : NSObject, UITableViewDataSource, UITableViewDele
         let cityFrom = _localityRepository.GetLocalityByName(name: cityFromName)
         let cityTo = _localityRepository.GetLocalityByName(name: cityToName)
         if cityFrom == nil || cityTo == nil {
-            errorLabel.text = "Internal error"
+            errorLabel.text = NSLocalizedString("INTERNAL_ERROR", comment: "")
             return
         }
         if cityFrom!.isEmpty {
-            errorLabel.text = "City from is not found"
+            errorLabel.text = NSLocalizedString("FROM_NOT_FOUND", comment: "")
             return
         }
         if cityTo!.isEmpty {
-            errorLabel.text = "City to is not found"
+            errorLabel.text = NSLocalizedString("TO_NOT_FOUND", comment: "")
             return
         }
         
         let data = _ridesRepository.GetRides(from: beforeDate, to: afterDate, fromLocality: cityFrom!.first!, toLocality: cityTo!.first!)
         if data == nil{
-            errorLabel.text = "Internal error"
+            errorLabel.text = NSLocalizedString("INTERNAL_ERROR", comment: "")
             return
         }
         if data!.isEmpty {
-            errorLabel.text = "No results found"
+            errorLabel.text = NSLocalizedString("NO_RESULTS_FOUND", comment: "")
         }
         items = data!
         DispatchQueue.main.async {
