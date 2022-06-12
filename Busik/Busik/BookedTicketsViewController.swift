@@ -12,14 +12,16 @@ class BookedTicketsViewController: UIViewController, UITableViewDelegate, UITabl
     fileprivate var items = [Ride]()
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var yourTicketsLabel: UILabel!
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.delegate = self
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: CELL_ID)
         tableView.reloadData()
+        
+        yourTicketsLabel.text = NSLocalizedString("YOUR_TICKETS", comment: "")
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

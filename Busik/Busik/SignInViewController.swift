@@ -13,6 +13,8 @@ class SignInViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var errorField: UILabel!
     @IBOutlet weak var signinButton: UIButton!
+    @IBOutlet weak var createAccountButton: UIButton!
+    @IBOutlet weak var signInLabel: UILabel!
     
     public var CtxManager: ContextManager!;
     var _userRepository: UserRepository!;
@@ -47,30 +49,38 @@ class SignInViewController: UIViewController {
         //dataSeeder.SeedRoutes();
         //dataSeeder.SeedRides();
         //dataSeeder.SeedBookedTickets();
+        
+        let signInText = NSLocalizedString("SIGN_IN", comment: "")
+        signInLabel.text = signInText
+        signinButton.setTitle(signInText, for: .normal)
+        createAccountButton.setTitle(NSLocalizedString("CREATE_ACCOUNT", comment: ""), for: .normal)
+        passwordTextField.attributedPlaceholder = NSAttributedString(
+            string: NSLocalizedString("PASSWORD", comment: ""),
+            attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
     }
     
     @IBAction func signInButtonClicked(_ sender: Any) {
         let login = emailTextField.text!
         let password = passwordTextField.text!
         if (login.isEmpty || password.isEmpty) {
-            errorField.text = "Field can't be empty"
+            errorField.text = NSLocalizedString("EMPTY_FIELD", comment: "")
             return
         }
         
         let user = _userRepository.GetUsersByLogin(login: login)
 
         if (user == nil) {
-            errorField.text = "Fatal error"
+            errorField.text = NSLocalizedString("FATAL_ERROR", comment: "")
             return
         }
         if(user!.isEmpty){
-            errorField.text = "User with this email don't exists"
+            errorField.text = NSLocalizedString("USER_DONT_EXIST", comment: "")
             return
         }
         let isValidPassword = PasswordComparer.Compare(coming: password, stored: user?.first?.password);
         
         if(!isValidPassword){
-            errorField.text = "Wrong password"
+            errorField.text = NSLocalizedString("WRONG_PASSWORD", comment: "")
             return
         }
         
