@@ -1,15 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "gradient.svg",
+      "filename" : "busik_logo-2.jpeg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "busik_logo.jpeg",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "busik_logo-1.jpeg",
       "idiom" : "universal",
       "scale" : "3x"
     }

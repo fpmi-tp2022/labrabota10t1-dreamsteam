@@ -1,15 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "Rectangle 1.pdf",
+      "filename" : "busik.jpeg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "busik-1.jpeg",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "busik-2.jpeg",
       "idiom" : "universal",
       "scale" : "3x"
     }
