@@ -44,6 +44,7 @@ class TimetableViewController : NSObject, UITableViewDataSource, UITableViewDele
         timetable.register(nib, forCellReuseIdentifier: CELL_ID)
     }
     
+    // sections
     func numberOfSections(in tableView: UITableView) -> Int {
         return sections.count
     }
@@ -62,10 +63,33 @@ class TimetableViewController : NSObject, UITableViewDataSource, UITableViewDele
         return numSections[section];
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 80
+    // cell clicked
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath) as! RideTableViewCell
+        
+        tableView.beginUpdates()
+        cell.showBookButton()
+        tableView.endUpdates()
     }
     
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath) as! RideTableViewCell
+
+        tableView.beginUpdates()
+        cell.hideBookButton()
+        tableView.endUpdates()
+    }
+    
+    // appearance
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if tableView.indexPathForSelectedRow?.row == indexPath.row {
+            return 100;
+        } else {
+            return 80;
+        }
+    }
+    
+    // cell info
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = timetable.dequeueReusableCell(withIdentifier: CELL_ID, for: indexPath) as! RideTableViewCell
         let item = items[indexPath.row]
