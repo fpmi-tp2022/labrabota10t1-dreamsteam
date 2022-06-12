@@ -13,6 +13,8 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var errorField: UILabel!
     @IBOutlet weak var signupButton: UIButton!
     @IBOutlet weak var repeatPasswordTextField: UITextField!
+    @IBOutlet weak var backToSignInButton: UIButton!
+    @IBOutlet weak var signUpLabel: UILabel!
     
     public var CtxManager: ContextManager!;
     var _userRepository: UserRepository!;
@@ -26,6 +28,17 @@ class SignUpViewController: UIViewController {
         let ctx = ContextRetriever.RetrieveContext();
         CtxManager = ContextManager(context: ctx);
         _userRepository = UserRepository(contextManager: CtxManager);
+        
+        let signUpText = NSLocalizedString("SIGN_UP", comment: "")
+        signUpLabel.text = signUpText
+        signupButton.setTitle(signUpText, for: .normal)
+        backToSignInButton.setTitle(NSLocalizedString("BACK_TO_SIGN_IN", comment: ""), for: .normal)
+        passwordTextField.attributedPlaceholder = NSAttributedString(
+            string: NSLocalizedString("PASSWORD", comment: ""),
+            attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
+        repeatPasswordTextField.attributedPlaceholder = NSAttributedString(
+            string: NSLocalizedString("REPEAT_PASSWORD", comment: ""),
+            attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
     }
     
     @IBAction func signUpButtonClicked(_ sender: Any) {
@@ -33,22 +46,22 @@ class SignUpViewController: UIViewController {
         let password = passwordTextField.text!
         let repeatPassword = repeatPasswordTextField.text!
         if (login.isEmpty || password.isEmpty || repeatPassword.isEmpty) {
-            errorField.text = "Field can't be empty"
+            errorField.text = NSLocalizedString("EMPTY_FIELD", comment: "")
             return
         }
         if password != repeatPassword {
-            errorField.text = "Different passwords"
+            errorField.text = NSLocalizedString("DIFFERENT_PASSWORDS", comment: "")
             return
         }
         
         let user = _userRepository.GetUsersByLogin(login: login)
 
         if (user == nil) {
-            errorField.text = "Fatal error"
+            errorField.text = NSLocalizedString("FATAL_ERROR", comment: "")
             return
         }
         if(!user!.isEmpty){
-            errorField.text = "User with this email already exists"
+            errorField.text = NSLocalizedString("USER_EXISTS", comment: "")
             return
         }
     

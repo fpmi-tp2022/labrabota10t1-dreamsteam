@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -17,8 +17,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sign In" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u4Q-19-Wqo">
-                                <rect key="frame" x="160" y="65" width="94" height="39"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sign In" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u4Q-19-Wqo">
+                                <rect key="frame" x="20" y="65" width="374" height="39"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="32"/>
                                 <nil key="textColor"/>
@@ -37,7 +37,7 @@
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I1N-CC-0ni">
-                                <rect key="frame" x="143" y="550" width="128" height="31"/>
+                                <rect key="frame" x="20" y="550" width="374" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="Create account">
@@ -71,15 +71,17 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <connections>
+                        <outlet property="createAccountButton" destination="I1N-CC-0ni" id="fkr-r3-rQn"/>
                         <outlet property="emailTextField" destination="AyL-V8-mDL" id="9n6-2c-j50"/>
                         <outlet property="errorField" destination="77X-On-nkA" id="859-sk-bC6"/>
                         <outlet property="passwordTextField" destination="VL6-cg-swJ" id="kgR-tI-GgI"/>
+                        <outlet property="signInLabel" destination="u4Q-19-Wqo" id="Vg5-fK-LQ6"/>
                         <outlet property="signinButton" destination="ML3-Nf-aaz" id="kMh-tH-4JS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="28.985507246376812" y="68.478260869565219"/>
+            <point key="canvasLocation" x="28.985507246376812" y="68.303571428571431"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="YWR-EZ-Po1">
@@ -119,8 +121,8 @@
                                     <action selector="signUpButtonClicked:" destination="h6H-LV-HU0" eventType="touchUpInside" id="V7s-rF-1gB"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sign Up" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CiV-xC-OsY">
-                                <rect key="frame" x="153" y="51" width="110" height="39"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sign Up" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CiV-xC-OsY">
+                                <rect key="frame" x="20" y="51" width="374" height="39"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="32"/>
                                 <nil key="textColor"/>
@@ -134,7 +136,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tYI-Ae-1wY">
-                                <rect key="frame" x="147" y="550" width="120" height="31"/>
+                                <rect key="frame" x="20" y="550" width="374" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="Back to sign in">
@@ -149,10 +151,12 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <connections>
+                        <outlet property="backToSignInButton" destination="tYI-Ae-1wY" id="7eg-cb-k94"/>
                         <outlet property="emailTextField" destination="qug-li-JGf" id="Mz9-8c-zox"/>
                         <outlet property="errorField" destination="osd-u2-u2g" id="5ht-EH-uyQ"/>
                         <outlet property="passwordTextField" destination="k9R-kc-j00" id="IwL-M3-cXb"/>
                         <outlet property="repeatPasswordTextField" destination="4Bj-K2-VOD" id="QpK-O6-slO"/>
+                        <outlet property="signUpLabel" destination="CiV-xC-OsY" id="IaM-l8-Yql"/>
                         <outlet property="signupButton" destination="YPy-5K-4PC" id="MQP-5X-bDv"/>
                     </connections>
                 </viewController>
@@ -197,6 +201,7 @@
                     <tabBarItem key="tabBarItem" title="Booked tickets" image="ticket" catalog="system" id="jNi-dF-KSP"/>
                     <connections>
                         <outlet property="tableView" destination="CIi-qU-DrI" id="Yjo-Ux-vCd"/>
+                        <outlet property="yourTicketsLabel" destination="Cwf-Nh-NfV" id="qgg-Bq-fTp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wQG-Oy-I6m" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -252,6 +257,8 @@
                     <tabBarItem key="tabBarItem" title="Map" image="map" catalog="system" id="Ghp-FK-nns"/>
                     <connections>
                         <outlet property="departurePointTextField" destination="9BS-JS-Se1" id="vJw-5a-eSa"/>
+                        <outlet property="findButton" destination="QLW-5m-n4k" id="TpT-Ml-ceq"/>
+                        <outlet property="getToLabel" destination="pW9-6Q-yiq" id="0wD-yd-ZbG"/>
                         <outlet property="map" destination="dPz-7Q-KTQ" id="YUd-zj-Ade"/>
                         <outlet property="validationLabel" destination="Byw-jm-bsP" id="Zsj-jT-2Jj"/>
                     </connections>
@@ -403,11 +410,15 @@
                     <connections>
                         <outlet property="afterDatePicker" destination="hZv-xb-zLB" id="dYI-QJ-sbW"/>
                         <outlet property="beforeDatePicker" destination="opz-9h-onW" id="SLU-hr-Yny"/>
+                        <outlet property="cityFromLabel" destination="0IJ-YA-4ZY" id="6lf-6x-e3C"/>
+                        <outlet property="cityToLabel" destination="juU-lu-0az" id="78j-W4-hPT"/>
                         <outlet property="errorLabel" destination="6YB-d6-pKx" id="yEV-Zo-sMD"/>
                         <outlet property="filtersBackground" destination="2ur-J5-wK4" id="UaS-xw-QWe"/>
+                        <outlet property="fromDateLabel" destination="wwF-Ma-BEV" id="Ofd-Cu-COt"/>
                         <outlet property="fromTextField" destination="EBV-3p-BhV" id="l0b-qs-aJC"/>
                         <outlet property="searchButton" destination="rmS-Sw-83y" id="Sgt-sp-kly"/>
                         <outlet property="timetable" destination="5oN-xV-bDf" id="kfa-hV-HlI"/>
+                        <outlet property="toDateLabel" destination="flB-Xp-B8t" id="2Uc-IW-QJ7"/>
                         <outlet property="toTextField" destination="0vr-GG-WG5" id="W0T-Kq-TN9"/>
                     </connections>
                 </viewController>

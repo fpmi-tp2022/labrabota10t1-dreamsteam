@@ -25,6 +25,10 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var searchButton: UIButton!
     @IBOutlet weak var filtersBackground: UIImageView!
+    @IBOutlet weak var cityFromLabel: UILabel!
+    @IBOutlet weak var cityToLabel: UILabel!
+    @IBOutlet weak var fromDateLabel: UILabel!
+    @IBOutlet weak var toDateLabel: UILabel!
     
     var suggestions: [String]! = []
     
@@ -67,6 +71,18 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
         afterDate = Calendar.current.date(bySettingHour: 0, minute: 0, second: 0, of: afterDatePicker.date)!
         
         timetableController!.FillTableWithData(Date(), Date(), "Minsk", "Brest")
+        
+        cityFromLabel.text = NSLocalizedString("CITY_FROM", comment: "")
+        cityToLabel.text = NSLocalizedString("CITY_TO", comment: "")
+        fromDateLabel.text = NSLocalizedString("FROM_DATE", comment: "")
+        toDateLabel.text = NSLocalizedString("TO_DATE", comment: "")
+        searchButton.setTitle(NSLocalizedString("SEARCH", comment: ""), for: .normal)
+        fromTextField.attributedPlaceholder = NSAttributedString(
+            string: NSLocalizedString("FROM", comment: ""),
+            attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
+        toTextField.attributedPlaceholder = NSAttributedString(
+            string: NSLocalizedString("TO", comment: ""),
+            attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool{
