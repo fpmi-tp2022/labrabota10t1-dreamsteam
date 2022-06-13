@@ -42,6 +42,7 @@ class TimetableViewController : NSObject, UITableViewDataSource, UITableViewDele
         
         self.timetable = timetable
         self.errorLabel = errorLabel
+
         cal.timeZone = TimeZone(identifier: "UTC")!
         
         let nib = UINib(nibName: CELL_ID, bundle: nil)
@@ -147,32 +148,31 @@ class TimetableViewController : NSObject, UITableViewDataSource, UITableViewDele
     public func FillTableWithData(_ beforeDate: Date, _ afterDate: Date, _ cityFromName: String, _ cityToName : String){
         let cityFrom = _localityRepository.GetLocalityByName(name: cityFromName)
         let cityTo = _localityRepository.GetLocalityByName(name: cityToName)
-        
+
         errorLabel.text = ""
         sections.removeAll()
         numSections.removeAll()
         items.removeAll()
         if cityFrom == nil || cityTo == nil {
-            errorLabel.text = "Internal error"
+            errorLabel.text = NSLocalizedString("INTERNAL_ERROR", comment: "")
             return
         }
         if cityFrom!.isEmpty {
-            errorLabel.text = "City from is not found"
+            errorLabel.text = NSLocalizedString("FROM_NOT_FOUND", comment: "")
             return
         }
         if cityTo!.isEmpty {
-            errorLabel.text = "City to is not found"
+            errorLabel.text = NSLocalizedString("TO_NOT_FOUND", comment: "")
             return
         }
         
         let data = _ridesRepository.GetRides(from: beforeDate, to: afterDate, fromLocality: cityFrom!.first!, toLocality: cityTo!.first!)
-        if data == nil {
-            errorLabel.text = "Internal error"
+        if data == nil{
+            errorLabel.text = NSLocalizedString("INTERNAL_ERROR", comment: "")
             return
         }
         if data!.isEmpty {
-            errorLabel.text = "No results found"
-            return
+            errorLabel.text = NSLocalizedString("NO_RESULTS_FOUND", comment: "")
         }
         
         UpdateData(data)

@@ -13,6 +13,8 @@ class BookedTicketsViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var errorLabel: UILabel!
+    @IBOutlet weak var yourTicketsLabel: UILabel!
+    
     private var timetableController : TimetableViewController?  = nil
 
     override func viewDidLoad() {
@@ -22,5 +24,7 @@ class BookedTicketsViewController: UIViewController {
         tableView.delegate = timetableController
         tableView.dataSource = timetableController
         tableView.reloadData()
+        
+        yourTicketsLabel.text = NSLocalizedString("YOUR_TICKETS", comment: "")
     }
 }

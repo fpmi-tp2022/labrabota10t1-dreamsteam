@@ -19,6 +19,23 @@ class BookedTicketRepository
         _localityRepository = LocalityRepository(contextManager: _ctxManager);
     }
     
+    func UnBookTicket(user: User, ride: Ride)
+    {
+        let bookedTickets = ride.bookedTickets!.allObjects as! [BookedTicket];
+        
+        let userBookedTicket = bookedTickets.filter{$0.user!.login == user.login}
+    
+        user.removeFromBookedTickets(userBookedTicket.first!);
+        
+        ride.availableTickets = ride.availableTickets + 1;
+        
+        do{
+            try _ctxManager.SaveChanges();
+        } catch let error as NSError{
+            print("Failed to unbook ticket with error \(error)");
+        }
+    }
+    
     func BookTicket(user: User, ride: Ride)
     {
         let bookedTicket = BookedTicket(context: _ctxManager.Context);

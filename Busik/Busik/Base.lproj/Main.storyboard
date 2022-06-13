@@ -17,8 +17,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sign In" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u4Q-19-Wqo">
-                                <rect key="frame" x="160" y="65" width="94" height="39"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sign In" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u4Q-19-Wqo">
+                                <rect key="frame" x="20" y="65" width="374" height="39"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="32"/>
                                 <nil key="textColor"/>
@@ -37,7 +37,7 @@
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I1N-CC-0ni">
-                                <rect key="frame" x="143" y="550" width="128" height="31"/>
+                                <rect key="frame" x="20" y="550" width="374" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="Create account">
@@ -50,7 +50,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="77X-On-nkA">
                                 <rect key="frame" x="20" y="627" width="374" height="52"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -66,20 +66,35 @@
                                     <action selector="signInButtonClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1Km-Bk-EvF"/>
                                 </connections>
                             </button>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="vZN-u8-ZQA">
+                                <rect key="frame" x="249" y="687" width="145" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="EN"/>
+                                    <segment title="BE"/>
+                                    <segment title="RU"/>
+                                </segments>
+                                <connections>
+                                    <action selector="LanguageChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="xfy-l2-FPC"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <connections>
+                        <outlet property="createAccountButton" destination="I1N-CC-0ni" id="fkr-r3-rQn"/>
                         <outlet property="emailTextField" destination="AyL-V8-mDL" id="9n6-2c-j50"/>
                         <outlet property="errorField" destination="77X-On-nkA" id="859-sk-bC6"/>
+                        <outlet property="languageSegmentedControl" destination="vZN-u8-ZQA" id="IvJ-pL-jjJ"/>
                         <outlet property="passwordTextField" destination="VL6-cg-swJ" id="kgR-tI-GgI"/>
+                        <outlet property="signInLabel" destination="u4Q-19-Wqo" id="Vg5-fK-LQ6"/>
                         <outlet property="signinButton" destination="ML3-Nf-aaz" id="kMh-tH-4JS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="28.985507246376812" y="68.478260869565219"/>
+            <point key="canvasLocation" x="28.985507246376812" y="68.303571428571431"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="YWR-EZ-Po1">
@@ -119,8 +134,8 @@
                                     <action selector="signUpButtonClicked:" destination="h6H-LV-HU0" eventType="touchUpInside" id="V7s-rF-1gB"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sign Up" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CiV-xC-OsY">
-                                <rect key="frame" x="153" y="51" width="110" height="39"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sign Up" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CiV-xC-OsY">
+                                <rect key="frame" x="20" y="51" width="374" height="39"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="32"/>
                                 <nil key="textColor"/>
@@ -129,12 +144,12 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="osd-u2-u2g">
                                 <rect key="frame" x="20" y="636" width="374" height="73"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tYI-Ae-1wY">
-                                <rect key="frame" x="147" y="550" width="120" height="31"/>
+                                <rect key="frame" x="20" y="550" width="374" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="Back to sign in">
@@ -149,10 +164,12 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <connections>
+                        <outlet property="backToSignInButton" destination="tYI-Ae-1wY" id="7eg-cb-k94"/>
                         <outlet property="emailTextField" destination="qug-li-JGf" id="Mz9-8c-zox"/>
                         <outlet property="errorField" destination="osd-u2-u2g" id="5ht-EH-uyQ"/>
                         <outlet property="passwordTextField" destination="k9R-kc-j00" id="IwL-M3-cXb"/>
                         <outlet property="repeatPasswordTextField" destination="4Bj-K2-VOD" id="QpK-O6-slO"/>
+                        <outlet property="signUpLabel" destination="CiV-xC-OsY" id="IaM-l8-Yql"/>
                         <outlet property="signupButton" destination="YPy-5K-4PC" id="MQP-5X-bDv"/>
                     </connections>
                 </viewController>
@@ -216,6 +233,7 @@
                     <connections>
                         <outlet property="errorLabel" destination="std-dv-Pif" id="C44-Kp-9ah"/>
                         <outlet property="tableView" destination="CIi-qU-DrI" id="Yjo-Ux-vCd"/>
+                        <outlet property="yourTicketsLabel" destination="Cwf-Nh-NfV" id="qgg-Bq-fTp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wQG-Oy-I6m" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -254,14 +272,16 @@
                                 <color key="textColor" systemColor="systemRedColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QLW-5m-n4k">
-                                <rect key="frame" x="26" y="624" width="34" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2jX-WO-tuG">
+                                <rect key="frame" x="20" y="637" width="374" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Find!">
-                                    <color key="titleColor" systemColor="systemBlueColor"/>
-                                </state>
+                                <color key="backgroundColor" systemColor="systemIndigoColor"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Button">
+                                    <color key="baseForegroundColor" systemColor="systemGreenColor"/>
+                                </buttonConfiguration>
                                 <connections>
-                                    <action selector="findButtonClicked:" destination="avW-IP-Sm6" eventType="touchUpInside" id="huQ-l0-6HN"/>
+                                    <action selector="findButtonClicked:" destination="avW-IP-Sm6" eventType="touchUpInside" id="WIN-u2-vMN"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -271,6 +291,8 @@
                     <tabBarItem key="tabBarItem" title="Map" image="map" catalog="system" id="Ghp-FK-nns"/>
                     <connections>
                         <outlet property="departurePointTextField" destination="9BS-JS-Se1" id="vJw-5a-eSa"/>
+                        <outlet property="findButton" destination="2jX-WO-tuG" id="xef-Jh-IuJ"/>
+                        <outlet property="getToLabel" destination="pW9-6Q-yiq" id="0wD-yd-ZbG"/>
                         <outlet property="map" destination="dPz-7Q-KTQ" id="YUd-zj-Ade"/>
                         <outlet property="validationLabel" destination="Byw-jm-bsP" id="Zsj-jT-2Jj"/>
                     </connections>
@@ -288,23 +310,23 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2ur-J5-wK4">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="304"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="260"/>
                                 <color key="backgroundColor" systemColor="systemBlueColor"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleAspectFit" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="5Rp-gk-l4a">
-                                <rect key="frame" x="10" y="54" width="394" height="230"/>
+                                <rect key="frame" x="10" y="10" width="394" height="230"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleAspectFit" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="6VF-Sb-i02">
                                         <rect key="frame" x="0.0" y="0.0" width="394" height="34"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="City from:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0IJ-YA-4ZY">
-                                                <rect key="frame" x="0.0" y="5" width="85.5" height="24"/>
+                                                <rect key="frame" x="0.0" y="5" width="85.333333333333329" height="24"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="From:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EBV-3p-BhV">
-                                                <rect key="frame" x="105.5" y="0.0" width="288.5" height="34"/>
+                                                <rect key="frame" x="105.33333333333334" y="0.0" width="288.66666666666663" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
@@ -314,13 +336,13 @@
                                         <rect key="frame" x="0.0" y="44" width="394" height="34"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="City to:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="juU-lu-0az">
-                                                <rect key="frame" x="0.0" y="5" width="62.5" height="24"/>
+                                                <rect key="frame" x="0.0" y="5" width="62.333333333333336" height="24"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="To:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0vr-GG-WG5">
-                                                <rect key="frame" x="104.5" y="0.0" width="289.5" height="34"/>
+                                                <rect key="frame" x="104.33333333333334" y="0.0" width="289.66666666666663" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
@@ -330,7 +352,7 @@
                                         <rect key="frame" x="0.0" y="88" width="394" height="31"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="From date:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wwF-Ma-BEV">
-                                                <rect key="frame" x="0.0" y="3.5" width="94" height="24"/>
+                                                <rect key="frame" x="0.0" y="3.6666666666666714" width="94" height="24"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -379,14 +401,14 @@
                                 </subviews>
                             </stackView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="5oN-xV-bDf">
-                                <rect key="frame" x="0.0" y="304" width="414" height="509"/>
+                                <rect key="frame" x="0.0" y="260" width="414" height="427"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="RideTableViewCell" id="ZJl-PI-2MI">
-                                        <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
+                                        <rect key="frame" x="0.0" y="44.666666030883789" width="414" height="43.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ZJl-PI-2MI" id="Eei-B3-D5T">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.666667938232422"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="RjW-6x-D3h">
@@ -422,11 +444,15 @@
                     <connections>
                         <outlet property="afterDatePicker" destination="hZv-xb-zLB" id="dYI-QJ-sbW"/>
                         <outlet property="beforeDatePicker" destination="opz-9h-onW" id="SLU-hr-Yny"/>
+                        <outlet property="cityFromLabel" destination="0IJ-YA-4ZY" id="6lf-6x-e3C"/>
+                        <outlet property="cityToLabel" destination="juU-lu-0az" id="78j-W4-hPT"/>
                         <outlet property="errorLabel" destination="6YB-d6-pKx" id="yEV-Zo-sMD"/>
                         <outlet property="filtersBackground" destination="2ur-J5-wK4" id="UaS-xw-QWe"/>
+                        <outlet property="fromDateLabel" destination="wwF-Ma-BEV" id="Ofd-Cu-COt"/>
                         <outlet property="fromTextField" destination="EBV-3p-BhV" id="l0b-qs-aJC"/>
                         <outlet property="searchButton" destination="rmS-Sw-83y" id="Sgt-sp-kly"/>
                         <outlet property="timetable" destination="5oN-xV-bDf" id="kfa-hV-HlI"/>
+                        <outlet property="toDateLabel" destination="flB-Xp-B8t" id="2Uc-IW-QJ7"/>
                         <outlet property="toTextField" destination="0vr-GG-WG5" id="W0T-Kq-TN9"/>
                     </connections>
                 </viewController>

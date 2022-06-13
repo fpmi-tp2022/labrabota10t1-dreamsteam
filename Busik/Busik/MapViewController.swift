@@ -12,8 +12,10 @@ class MapViewController: UIViewController, UITextFieldDelegate, MKMapViewDelegat
 
     @IBOutlet weak var departurePointTextField: UITextField!
     @IBOutlet weak var map: MKMapView!
-    
     @IBOutlet weak var validationLabel: UILabel!
+    @IBOutlet weak var getToLabel: UILabel!
+    @IBOutlet weak var findButton: UIButton!
+    
     var suggestions: [String]! = []
     var activeAnnotations: [Artwork]! = []
     
@@ -52,7 +54,6 @@ class MapViewController: UIViewController, UITextFieldDelegate, MKMapViewDelegat
             localities.append(route.to!);
         }
         RefreshAnnotations(localities: localities, departure: locality![0]);
-        
     }
     
     func RefreshAnnotations(localities: [Locality], departure: Locality){
@@ -151,23 +152,14 @@ class MapViewController: UIViewController, UITextFieldDelegate, MKMapViewDelegat
             suggestions.append(locality.name!);
         }
         
-        //print(suggestions)
-        
-        
         departurePointTextField.delegate = self;
         
-        
-        
-        /*let london = MKPointAnnotation()
-        london.title = "London"
-        london.coordinate = CLLocationCoordinate2D(latitude: 51.507222, longitude: -0.1275)
-        map.addAnnotation(london)
-        
-        map.reloadInputViews()*/
-        
-        //let initialLocation = CLLocation(latitude: 53.893009, longitude: 27.567444)
-        //map.centerToLocation(initialLocation)
-
+        getToLabel.text = NSLocalizedString("MAP_GET_TO", comment: "")
+        findButton.setTitle(NSLocalizedString("FIND", comment: ""), for: .normal)
+        departurePointTextField.attributedPlaceholder = NSAttributedString(
+            string: NSLocalizedString("DEPARTURE_POINT", comment: ""),
+            attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
+        validationLabel.text = NSLocalizedString("DEPARTURE_NOT_FOUND", comment: "")
     }
     
     func mapView(

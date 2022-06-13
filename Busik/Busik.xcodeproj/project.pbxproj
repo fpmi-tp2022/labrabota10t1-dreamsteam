@@ -16,6 +16,7 @@
 		2EAF25172850FAEE000F60B9 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EAF25162850FAED000F60B9 /* MapKit.framework */; };
 		2EAF25192850FC58000F60B9 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EAF25182850FC58000F60B9 /* MapViewController.swift */; };
 		2EDF2BBB2854C05400F18D41 /* BookedTicketsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EDF2BBA2854C05400F18D41 /* BookedTicketsViewController.swift */; };
+		2EDF2BC02856253B00F18D41 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2EDF2BC22856253B00F18D41 /* Localizable.strings */; };
 		772218052852496C00884076 /* RideRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772218042852496C00884076 /* RideRepository.swift */; };
 		7722180A2852564900884076 /* BookedTicket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772218092852564900884076 /* BookedTicket.swift */; };
 		772B233C285498DB0066C15E /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772B233B285498DB0066C15E /* Map.swift */; };
@@ -76,6 +77,13 @@
 		2EAF25162850FAED000F60B9 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		2EAF25182850FC58000F60B9 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		2EDF2BBA2854C05400F18D41 /* BookedTicketsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookedTicketsViewController.swift; sourceTree = "<group>"; };
+		2EDF2BC12856253B00F18D41 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		2EDF2BC6285625B900F18D41 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
+		2EDF2BC7285625B900F18D41 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		2EDF2BC8285625B900F18D41 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		2EDF2BC9285625E500F18D41 /* be-BY */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "be-BY"; path = "be-BY.lproj/Main.strings"; sourceTree = "<group>"; };
+		2EDF2BCA285625E500F18D41 /* be-BY */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "be-BY"; path = "be-BY.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		2EDF2BCB285625E500F18D41 /* be-BY */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "be-BY"; path = "be-BY.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		772218042852496C00884076 /* RideRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RideRepository.swift; sourceTree = "<group>"; };
 		772218092852564900884076 /* BookedTicket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookedTicket.swift; sourceTree = "<group>"; };
 		772B233B285498DB0066C15E /* Map.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
@@ -204,6 +212,7 @@
 				77E545822846562900BA3924 /* SignInViewController.swift */,
 				22849F8B28529AAD00DEC5F9 /* SearchViewController.swift */,
 				77E545842846562900BA3924 /* Main.storyboard */,
+				2EDF2BC22856253B00F18D41 /* Localizable.strings */,
 				2EDF2BBA2854C05400F18D41 /* BookedTicketsViewController.swift */,
 				2EAF2511284FDE30000F60B9 /* MainMenuViewController.swift */,
 				2EAF250F284FD083000F60B9 /* SignUpViewController.swift */,
@@ -374,6 +383,8 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
+				"be-BY",
 			);
 			mainGroup = 77E545722846562900BA3924;
 			productRefGroup = 77E5457C2846562900BA3924 /* Products */;
@@ -392,6 +403,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2EDF2BC02856253B00F18D41 /* Localizable.strings in Resources */,
 				77E5458E2846562A00BA3924 /* LaunchScreen.storyboard in Resources */,
 				22D138D1285509700051EE3F /* RideTableViewCell.xib in Resources */,
 				77E5458B2846562A00BA3924 /* Assets.xcassets in Resources */,
@@ -488,10 +500,22 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		2EDF2BC22856253B00F18D41 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2EDF2BC12856253B00F18D41 /* en */,
+				2EDF2BC8285625B900F18D41 /* ru */,
+				2EDF2BCB285625E500F18D41 /* be-BY */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		77E545842846562900BA3924 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				77E545852846562900BA3924 /* Base */,
+				2EDF2BC6285625B900F18D41 /* ru */,
+				2EDF2BC9285625E500F18D41 /* be-BY */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -500,6 +524,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				77E5458D2846562A00BA3924 /* Base */,
+				2EDF2BC7285625B900F18D41 /* ru */,
+				2EDF2BCA285625E500F18D41 /* be-BY */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -511,6 +537,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -572,6 +599,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

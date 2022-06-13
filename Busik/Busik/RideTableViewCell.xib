@@ -42,7 +42,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="13,90$" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ceu-96-4RM">
-                        <rect key="frame" x="295" y="24" width="85" height="32.5"/>
+                        <rect key="frame" x="295" y="24" width="86" height="32.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="27"/>
                         <color key="textColor" systemColor="systemGreenColor"/>
                         <nil key="highlightedColor"/>

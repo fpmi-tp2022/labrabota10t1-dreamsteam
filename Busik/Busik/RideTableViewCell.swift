@@ -75,4 +75,3 @@ class RideTableViewCell: UITableViewCell {
     }
     
 }
-

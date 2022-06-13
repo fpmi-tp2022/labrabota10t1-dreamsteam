@@ -8,7 +8,6 @@
 import UIKit
 
 class SearchViewController: UIViewController, UITextFieldDelegate {
-    
     public var CtxManager: ContextManager!;
     var _localityRepository: LocalityRepository!;
 
@@ -29,6 +28,11 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
     private var afterDate: Date = Date()
     
     var cal = Calendar.current
+
+    @IBOutlet weak var cityFromLabel: UILabel!
+    @IBOutlet weak var cityToLabel: UILabel!
+    @IBOutlet weak var fromDateLabel: UILabel!
+    @IBOutlet weak var toDateLabel: UILabel!
     
     private var timetableController : TimetableViewController?  = nil
     
@@ -41,7 +45,6 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
         filtersBackground.layer.cornerRadius = 20
         filtersBackground.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
         searchButton.layer.cornerRadius = 10
-        
         
         timetableController = TimetableViewController(timetable: timetable, errorLabel: errorLabel, usage: .Search)
         timetable.delegate = timetableController!
@@ -61,6 +64,18 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
         afterDatePicker.minimumDate = beforeDatePicker.minimumDate
         beforeDate = Date()
         afterDate = cal.date(bySettingHour: 23, minute: 59, second: 59, of: Date())!
+        
+        cityFromLabel.text = NSLocalizedString("CITY_FROM", comment: "")
+        cityToLabel.text = NSLocalizedString("CITY_TO", comment: "")
+        fromDateLabel.text = NSLocalizedString("FROM_DATE", comment: "")
+        toDateLabel.text = NSLocalizedString("TO_DATE", comment: "")
+        searchButton.setTitle(NSLocalizedString("SEARCH", comment: ""), for: .normal)
+        fromTextField.attributedPlaceholder = NSAttributedString(
+            string: NSLocalizedString("FROM", comment: ""),
+            attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
+        toTextField.attributedPlaceholder = NSAttributedString(
+            string: NSLocalizedString("TO", comment: ""),
+            attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool{
@@ -94,7 +109,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
     @IBAction func buttonSearchClicked(_ sender: Any) {
         cityFrom = fromTextField.text!
         cityTo = toTextField.text!
-    
+
         beforeDate = cal.date(bySettingHour: 0, minute: 0, second: 0, of: beforeDatePicker.date)!
         afterDate = cal.date(bySettingHour: 23, minute: 59, second: 59, of: afterDatePicker.date)!
         if .orderedSame == cal.compare(beforeDate, to: Date(), toGranularity: .day) {
