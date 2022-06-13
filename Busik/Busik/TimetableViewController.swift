@@ -27,12 +27,16 @@ class TimetableViewController : NSObject, UITableViewDataSource, UITableViewDele
     var sections = [String]()
     var numSections = [Int]()
     
-    init(timetable: UITableView, errorLabel: UILabel) {
+    enum TimetableUsage {
+        case Search
+        case Booked
+    }
+    let usage: TimetableUsage
+    
+    init(timetable: UITableView, errorLabel: UILabel, usage : TimetableUsage) {
         let ctx = ContextRetriever.RetrieveContext();
         CtxManager = ContextManager(context: ctx);
-        _userRepository = UserRepository(contextManager: CtxManager);
         _localityRepository = LocalityRepository(contextManager: CtxManager);
-        _roureRepository = RouteRepository(contextManager: CtxManager);
         _ridesRepository = RideRepository(contextManager: CtxManager);
         _bookedTicketRepository = BookedTicketRepository(contextManager: CtxManager);
         
@@ -94,10 +98,32 @@ class TimetableViewController : NSObject, UITableViewDataSource, UITableViewDele
         let cell = timetable.dequeueReusableCell(withIdentifier: CELL_ID, for: indexPath) as! RideTableViewCell
         let item = items[indexPath.row]
         
-        cell.constructFromRide(ride: item)
+        if usage == .Search {
+            cell.constructFromRide(ride: item, buttonText: "Book", buttonHandler: <#T##(RideTableViewCell, Ride) -> ()#>)
+        } else if usage == .Booked {
+            cell.constructFromRide(ride: item, buttonText: "Return", buttonHandler: <#T##(RideTableViewCell, Ride) -> ()#>)
+        }
         return cell
     }
     
+    public func FillTableBookedTickets(_ user: User) {
+        let data = _bookedTicketRepository.GetBookedTicketsByUserLogin(login: user.login!)
+        
+        errorLabel.text = ""
+        sections.removeAll()
+        numSections.removeAll()
+        items.removeAll()
+        if data == nil {
+            errorLabel.text = "Internal error"
+            return
+        }
+        if data!.isEmpty {
+            errorLabel.text = "You haven't booked tickets yet"
+            return
+        }
+        
+        UpdateData(data)
+    }
     
     public func FillTableWithData(_ beforeDate: Date, _ afterDate: Date, _ cityFromName: String, _ cityToName : String){
         let cityFrom = _localityRepository.GetLocalityByName(name: cityFromName)
@@ -130,6 +156,10 @@ class TimetableViewController : NSObject, UITableViewDataSource, UITableViewDele
             return
         }
         
+        UpdateData(data)
+    }
+    
+    private func UpdateData(_ data: [Ride]?) {
         var curCount = 0
         var curDate : Date = data![0].departureTime!
         let dateFormatter = DateFormatter()

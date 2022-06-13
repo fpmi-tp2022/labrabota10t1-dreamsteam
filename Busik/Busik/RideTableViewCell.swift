@@ -8,14 +8,28 @@
 import UIKit
 
 class RideTableViewCell: UITableViewCell {
+    public var CtxManager: ContextManager!;
+    var _bookedTicketRepository: BookedTicketRepository!;
+    
     @IBOutlet weak var departureLabel: UILabel!
     @IBOutlet weak var arrivalLabel: UILabel!
     @IBOutlet weak var durationLabel: UILabel!
-    @IBOutlet weak var bookButton: UIButton!
+    @IBOutlet weak var cellButton: UIButton!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var dashedLine: UILabel!
     
-    public func constructFromRide(ride: Ride) {
+    var onButtonClick : ((RideTableViewCell, Ride) -> ())? = nil
+    
+    var ride: Ride? = nil
+    
+    public func constructFromRide(ride: Ride, buttonText: String, buttonHandler: @escaping (RideTableViewCell, Ride) -> ()) {
+        let ctx = ContextRetriever.RetrieveContext();
+        CtxManager = ContextManager(context: ctx);
+        _bookedTicketRepository = BookedTicketRepository(contextManager: CtxManager);
+        self.ride = ride
+        self.cellButton.setTitle(buttonText, for: .normal)
+        self.onButtonClick = buttonHandler
+        
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH:mm"
         dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
@@ -28,19 +42,23 @@ class RideTableViewCell: UITableViewCell {
     
     public func showBookButton() {
         UIView.animate(withDuration: 0.5) {
-            self.bookButton.alpha = 1
-            self.bookButton.isHidden = false
+            self.cellButton.alpha = 1
+            self.cellButton.isHidden = false
         }
+        self.cellButton.isEnabled = ride!.availableTickets > 0
     }
     
     public func hideBookButton() {
         UIView.animate(withDuration: 0.5) {
-            self.bookButton.alpha = 0
-            self.bookButton.isHidden = true
+            self.cellButton.alpha = 0
+            self.cellButton.isHidden = true
         }
     }
     
-    @IBAction func bookTicket(_ sender: Any) {
+    @IBAction func buttonClicked(_ sender: Any) {
+        if let callback = onButtonClick {
+          callback(self, ride!)
+        }
     }
     
     override func awakeFromNib() {
@@ -55,3 +73,4 @@ class RideTableViewCell: UITableViewCell {
     }
     
 }
+

@@ -10,12 +10,7 @@ import UIKit
 class SearchViewController: UIViewController, UITextFieldDelegate {
     
     public var CtxManager: ContextManager!;
-    var _userRepository: UserRepository!;
     var _localityRepository: LocalityRepository!;
-    var _roureRepository: RouteRepository!;
-    var _ridesRepository: RideRepository!;
-    var _bookedTicketRepository: BookedTicketRepository!;
-    
 
     @IBOutlet weak var beforeDatePicker: UIDatePicker!
     @IBOutlet weak var afterDatePicker: UIDatePicker!
@@ -41,11 +36,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         let ctx = ContextRetriever.RetrieveContext();
         CtxManager = ContextManager(context: ctx);
-        _userRepository = UserRepository(contextManager: CtxManager);
         _localityRepository = LocalityRepository(contextManager: CtxManager);
-        _roureRepository = RouteRepository(contextManager: CtxManager);
-        _ridesRepository = RideRepository(contextManager: CtxManager);
-        _bookedTicketRepository = BookedTicketRepository(contextManager: CtxManager);
        
         filtersBackground.layer.cornerRadius = 20
         filtersBackground.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
@@ -107,6 +98,22 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
         beforeDate = cal.date(bySettingHour: 0, minute: 0, second: 0, of: beforeDatePicker.date)!
         afterDate = cal.date(bySettingHour: 23, minute: 59, second: 59, of: afterDatePicker.date)!
         timetableController!.FillTableWithData(beforeDate, afterDate, cityFrom, cityTo)
+        showToast(message: "Searching", seconds: 1.0)
     }
     
+    
 }
+
+extension SearchViewController {
+
+    func showToast(message : String, seconds: Double) {
+        let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+        alert.view.backgroundColor = .black
+        alert.view.alpha = 0.5
+        alert.view.layer.cornerRadius = 15
+        self.present(alert, animated: true)
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + seconds) {
+            alert.dismiss(animated: true)
+        }
+    }
+ }

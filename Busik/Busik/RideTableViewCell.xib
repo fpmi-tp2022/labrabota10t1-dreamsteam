@@ -89,7 +89,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="arrivalLabel" destination="Uo9-oc-XKh" id="Bsd-9W-fGZ"/>
-                <outlet property="bookButton" destination="bIE-bX-0kK" id="Cmh-A1-Uxv"/>
+                <outlet property="cellButton" destination="bIE-bX-0kK" id="Cmh-A1-Uxv"/>
                 <outlet property="dashedLine" destination="xIG-ds-o5G" id="esY-RF-a5d"/>
                 <outlet property="departureLabel" destination="iPV-bc-fE9" id="Wxm-41-It1"/>
                 <outlet property="durationLabel" destination="PKM-hm-bxh" id="mZD-dd-CYg"/>
