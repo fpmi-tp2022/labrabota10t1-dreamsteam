@@ -20,6 +20,7 @@
 		7722180A2852564900884076 /* BookedTicket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772218092852564900884076 /* BookedTicket.swift */; };
 		772B233C285498DB0066C15E /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772B233B285498DB0066C15E /* Map.swift */; };
 		773B19402854FFF200EAEF90 /* PasswordComparer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773B193F2854FFF200EAEF90 /* PasswordComparer.swift */; };
+		775610BD2857C0F800B41F9F /* UserContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775610BC2857C0F700B41F9F /* UserContext.swift */; };
 		77C61E0228513B2A00311804 /* LocalityRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77C61E0128513B2A00311804 /* LocalityRepository.swift */; };
 		77C61E072851447E00311804 /* RouteRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77C61E062851447E00311804 /* RouteRepository.swift */; };
 		77E5457F2846562900BA3924 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77E5457E2846562900BA3924 /* AppDelegate.swift */; };
@@ -79,6 +80,7 @@
 		772218092852564900884076 /* BookedTicket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookedTicket.swift; sourceTree = "<group>"; };
 		772B233B285498DB0066C15E /* Map.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
 		773B193F2854FFF200EAEF90 /* PasswordComparer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordComparer.swift; sourceTree = "<group>"; };
+		775610BC2857C0F700B41F9F /* UserContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserContext.swift; sourceTree = "<group>"; };
 		77C61E0128513B2A00311804 /* LocalityRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalityRepository.swift; sourceTree = "<group>"; };
 		77C61E062851447E00311804 /* RouteRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteRepository.swift; sourceTree = "<group>"; };
 		77E5457B2846562900BA3924 /* Busik.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Busik.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -159,6 +161,7 @@
 			isa = PBXGroup;
 			children = (
 				773B193F2854FFF200EAEF90 /* PasswordComparer.swift */,
+				775610BC2857C0F700B41F9F /* UserContext.swift */,
 			);
 			path = Security;
 			sourceTree = "<group>";
@@ -421,6 +424,7 @@
 				77E546442846714B00BA3924 /* Locality+CoreDataClass.swift in Sources */,
 				77E5462728466F2300BA3924 /* ContextRetriever.swift in Sources */,
 				772218052852496C00884076 /* RideRepository.swift in Sources */,
+				775610BD2857C0F800B41F9F /* UserContext.swift in Sources */,
 				77E5461C2846683A00BA3924 /* ContextManager.swift in Sources */,
 				77E546422846714B00BA3924 /* User+CoreDataClass.swift in Sources */,
 				77E5465128467DE700BA3924 /* Role.swift in Sources */,

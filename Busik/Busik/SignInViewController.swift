@@ -63,16 +63,20 @@ class SignInViewController: UIViewController {
             errorField.text = "Fatal error"
             return
         }
+        
         if(user!.isEmpty){
             errorField.text = "User with this email don't exists"
             return
         }
+        
         let isValidPassword = PasswordComparer.Compare(coming: password, stored: user?.first?.password);
         
         if(!isValidPassword){
             errorField.text = "Wrong password"
             return
         }
+        
+        UserContext.CurrentUser = user!.first;
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let secondVC = storyboard.instantiateViewController(identifier: "MainMenuStoryboard")
