@@ -23,7 +23,7 @@ class BookedTicketsViewController: UIViewController {
         timetableController = TimetableViewController(timetable: tableView, errorLabel: errorLabel, usage: .Booked)
         tableView.delegate = timetableController
         tableView.dataSource = timetableController
-        tableView.reloadData()
+        timetableController!.FillTableBookedTickets(UserContext.CurrentUser)
         
         yourTicketsLabel.text = NSLocalizedString("YOUR_TICKETS", comment: "")
     }

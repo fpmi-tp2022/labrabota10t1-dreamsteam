@@ -39,7 +39,7 @@ class TimetableViewController : NSObject, UITableViewDataSource, UITableViewDele
         _localityRepository = LocalityRepository(contextManager: CtxManager);
         _ridesRepository = RideRepository(contextManager: CtxManager);
         _bookedTicketRepository = BookedTicketRepository(contextManager: CtxManager);
-        
+        self.usage = usage
         self.timetable = timetable
         self.errorLabel = errorLabel
 
@@ -118,7 +118,7 @@ class TimetableViewController : NSObject, UITableViewDataSource, UITableViewDele
     func OnCancellingBooking(cell : RideTableViewCell, ride: Ride) {
         let user = UserContext.CurrentUser
         _bookedTicketRepository.UnBookTicket(user: user!, ride: ride)
-        timetable.reloadData()
+        FillTableBookedTickets(user!)
     }
     
     public func FillTableBookedTickets(_ user: User) {
@@ -173,6 +173,7 @@ class TimetableViewController : NSObject, UITableViewDataSource, UITableViewDele
         }
         if data!.isEmpty {
             errorLabel.text = NSLocalizedString("NO_RESULTS_FOUND", comment: "")
+            return
         }
         
         UpdateData(data)
