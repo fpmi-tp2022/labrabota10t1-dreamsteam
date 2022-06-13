@@ -30,7 +30,7 @@ class UserRepository
         return users;
     }
     
-    public func AddUser(login: String, password: String, role: Role = Role.Default)
+    public func AddUser(login: String, password: String, role: Role = Role.Default) -> User?
     {
         let user = User(context: _ctxManager.Context);
         user.login = login;
@@ -41,7 +41,9 @@ class UserRepository
             try _ctxManager.SaveChanges();
         } catch let error as NSError{
             print("Failed to save new user: \(user) :error \(error)")
+            return nil
         }
+        return user
     }
     
     public func GetUsersByLogin(login: String) -> [User]?

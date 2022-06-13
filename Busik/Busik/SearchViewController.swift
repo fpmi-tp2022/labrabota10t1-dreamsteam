@@ -8,14 +8,8 @@
 import UIKit
 
 class SearchViewController: UIViewController, UITextFieldDelegate {
-    
     public var CtxManager: ContextManager!;
-    var _userRepository: UserRepository!;
     var _localityRepository: LocalityRepository!;
-    var _roureRepository: RouteRepository!;
-    var _ridesRepository: RideRepository!;
-    var _bookedTicketRepository: BookedTicketRepository!;
-    
 
     @IBOutlet weak var beforeDatePicker: UIDatePicker!
     @IBOutlet weak var afterDatePicker: UIDatePicker!
@@ -25,10 +19,6 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var searchButton: UIButton!
     @IBOutlet weak var filtersBackground: UIImageView!
-    @IBOutlet weak var cityFromLabel: UILabel!
-    @IBOutlet weak var cityToLabel: UILabel!
-    @IBOutlet weak var fromDateLabel: UILabel!
-    @IBOutlet weak var toDateLabel: UILabel!
     
     var suggestions: [String]! = []
     
@@ -37,24 +27,26 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
     private var beforeDate: Date = Date()
     private var afterDate: Date = Date()
     
+    var cal = Calendar.current
+
+    @IBOutlet weak var cityFromLabel: UILabel!
+    @IBOutlet weak var cityToLabel: UILabel!
+    @IBOutlet weak var fromDateLabel: UILabel!
+    @IBOutlet weak var toDateLabel: UILabel!
+    
     private var timetableController : TimetableViewController?  = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
         let ctx = ContextRetriever.RetrieveContext();
         CtxManager = ContextManager(context: ctx);
-        _userRepository = UserRepository(contextManager: CtxManager);
         _localityRepository = LocalityRepository(contextManager: CtxManager);
-        _roureRepository = RouteRepository(contextManager: CtxManager);
-        _ridesRepository = RideRepository(contextManager: CtxManager);
-        _bookedTicketRepository = BookedTicketRepository(contextManager: CtxManager);
        
         filtersBackground.layer.cornerRadius = 20
         filtersBackground.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
         searchButton.layer.cornerRadius = 10
         
-        
-        timetableController = TimetableViewController(timetable: timetable, errorLabel: errorLabel)
+        timetableController = TimetableViewController(timetable: timetable, errorLabel: errorLabel, usage: .Search)
         timetable.delegate = timetableController!
         timetable.dataSource = timetableController!
 
@@ -65,12 +57,13 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
         fromTextField.delegate = self
         toTextField.delegate = self
         
+        cal.timeZone = TimeZone(identifier: "UTC")!
         beforeDatePicker.timeZone = TimeZone.init(abbreviation: "UTC")
         afterDatePicker.timeZone = TimeZone.init(abbreviation: "UTC")
-        beforeDate = Calendar.current.date(bySettingHour: 0, minute: 0, second: 0, of: beforeDatePicker.date)!
-        afterDate = Calendar.current.date(bySettingHour: 0, minute: 0, second: 0, of: afterDatePicker.date)!
-        
-        timetableController!.FillTableWithData(Date(), Date(), "Minsk", "Brest")
+        beforeDatePicker.minimumDate = Date()
+        afterDatePicker.minimumDate = beforeDatePicker.minimumDate
+        beforeDate = Date()
+        afterDate = cal.date(bySettingHour: 23, minute: 59, second: 59, of: Date())!
         
         cityFromLabel.text = NSLocalizedString("CITY_FROM", comment: "")
         cityToLabel.text = NSLocalizedString("CITY_TO", comment: "")
@@ -116,9 +109,29 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
     @IBAction func buttonSearchClicked(_ sender: Any) {
         cityFrom = fromTextField.text!
         cityTo = toTextField.text!
-        beforeDate = Calendar.current.date(bySettingHour: 0, minute: 0, second: 0, of: beforeDatePicker.date)!
-        afterDate = Calendar.current.date(bySettingHour: 0, minute: 0, second: 0, of: afterDatePicker.date)!
+
+        beforeDate = cal.date(bySettingHour: 0, minute: 0, second: 0, of: beforeDatePicker.date)!
+        afterDate = cal.date(bySettingHour: 23, minute: 59, second: 59, of: afterDatePicker.date)!
+        if .orderedSame == cal.compare(beforeDate, to: Date(), toGranularity: .day) {
+            beforeDate = Date()
+        }
+        
         timetableController!.FillTableWithData(beforeDate, afterDate, cityFrom, cityTo)
     }
     
+    
 }
+
+extension SearchViewController {
+
+    func showToast(message : String, seconds: Double) {
+        let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+        alert.view.backgroundColor = .black
+        alert.view.alpha = 0.5
+        alert.view.layer.cornerRadius = 15
+        self.present(alert, animated: true)
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + seconds) {
+            alert.dismiss(animated: true)
+        }
+    }
+ }

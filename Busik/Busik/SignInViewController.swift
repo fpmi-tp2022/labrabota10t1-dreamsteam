@@ -46,9 +46,9 @@ class SignInViewController: UIViewController {
         //ATTENTION: uncomment to get add test data to db if needed
         //But do it only once on each device
         //dataSeeder.SeedUsers()
-        //dataSeeder.SeedLocalities();
-        //dataSeeder.SeedRoutes();
-        //dataSeeder.SeedRides();
+        dataSeeder.SeedLocalities();
+        dataSeeder.SeedRoutes();
+        dataSeeder.SeedRides();
         //dataSeeder.SeedBookedTickets();
         
         errorField.lineBreakMode = .byWordWrapping
@@ -79,16 +79,20 @@ class SignInViewController: UIViewController {
             errorField.text = NSLocalizedString("FATAL_ERROR", comment: "")
             return
         }
+        
         if(user!.isEmpty){
             errorField.text = NSLocalizedString("USER_DONT_EXIST", comment: "")
             return
         }
+        
         let isValidPassword = PasswordComparer.Compare(coming: password, stored: user?.first?.password);
         
         if(!isValidPassword){
             errorField.text = NSLocalizedString("WRONG_PASSWORD", comment: "")
             return
         }
+        
+        UserContext.CurrentUser = user!.first;
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let secondVC = storyboard.instantiateViewController(identifier: "MainMenuStoryboard")
