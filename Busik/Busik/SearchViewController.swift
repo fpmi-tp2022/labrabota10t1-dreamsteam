@@ -43,7 +43,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
         searchButton.layer.cornerRadius = 10
         
         
-        timetableController = TimetableViewController(timetable: timetable, errorLabel: errorLabel)
+        timetableController = TimetableViewController(timetable: timetable, errorLabel: errorLabel, usage: .Search)
         timetable.delegate = timetableController!
         timetable.dataSource = timetableController!
 
@@ -57,10 +57,10 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
         cal.timeZone = TimeZone(identifier: "UTC")!
         beforeDatePicker.timeZone = TimeZone.init(abbreviation: "UTC")
         afterDatePicker.timeZone = TimeZone.init(abbreviation: "UTC")
-        beforeDate = cal.date(bySettingHour: 0, minute: 0, second: 0, of: beforeDatePicker.date)!
-        afterDate = cal.date(bySettingHour: 23, minute: 59, second: 59, of: afterDatePicker.date)!
-        
-        //timetableController!.FillTableWithData(Date(), Date(), "Minsk", "Brest")
+        beforeDatePicker.minimumDate = Date()
+        afterDatePicker.minimumDate = beforeDatePicker.minimumDate
+        beforeDate = Date()
+        afterDate = cal.date(bySettingHour: 23, minute: 59, second: 59, of: Date())!
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool{
@@ -94,11 +94,14 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
     @IBAction func buttonSearchClicked(_ sender: Any) {
         cityFrom = fromTextField.text!
         cityTo = toTextField.text!
-        
+    
         beforeDate = cal.date(bySettingHour: 0, minute: 0, second: 0, of: beforeDatePicker.date)!
         afterDate = cal.date(bySettingHour: 23, minute: 59, second: 59, of: afterDatePicker.date)!
+        if .orderedSame == cal.compare(beforeDate, to: Date(), toGranularity: .day) {
+            beforeDate = Date()
+        }
+        
         timetableController!.FillTableWithData(beforeDate, afterDate, cityFrom, cityTo)
-        showToast(message: "Searching", seconds: 1.0)
     }
     
     

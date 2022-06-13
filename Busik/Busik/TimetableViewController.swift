@@ -99,11 +99,25 @@ class TimetableViewController : NSObject, UITableViewDataSource, UITableViewDele
         let item = items[indexPath.row]
         
         if usage == .Search {
-            cell.constructFromRide(ride: item, buttonText: "Book", buttonHandler: <#T##(RideTableViewCell, Ride) -> ()#>)
+            cell.constructFromRide(row: indexPath.row, ride: item, buttonText: "Book", buttonHandler: OnBooking(cell:ride:))
         } else if usage == .Booked {
-            cell.constructFromRide(ride: item, buttonText: "Return", buttonHandler: <#T##(RideTableViewCell, Ride) -> ()#>)
+            cell.constructFromRide(row: indexPath.row, ride: item, buttonText: "Return", buttonHandler: OnCancellingBooking(cell:ride:))
         }
         return cell
+    }
+    
+    func OnBooking(cell : RideTableViewCell, ride: Ride) {
+        let user = UserContext.CurrentUser
+        _bookedTicketRepository.BookTicket(user: user!, ride: ride)
+        if (ride.availableTickets <= 0) {
+            cell.cellButton.isEnabled = false
+        }
+    }
+    
+    func OnCancellingBooking(cell : RideTableViewCell, ride: Ride) {
+        let user = UserContext.CurrentUser
+        _bookedTicketRepository.UnBookTicket(user: user!, ride: ride)
+        timetable.reloadData()
     }
     
     public func FillTableBookedTickets(_ user: User) {
@@ -122,7 +136,12 @@ class TimetableViewController : NSObject, UITableViewDataSource, UITableViewDele
             return
         }
         
-        UpdateData(data)
+        var rides = [Ride]()
+        for ticket in data! {
+            rides.append(ticket.ride!)
+        }
+        
+        UpdateData(rides)
     }
     
     public func FillTableWithData(_ beforeDate: Date, _ afterDate: Date, _ cityFromName: String, _ cityToName : String){

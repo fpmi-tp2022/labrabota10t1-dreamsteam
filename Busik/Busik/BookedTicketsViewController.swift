@@ -18,7 +18,7 @@ class BookedTicketsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        timetableController = TimetableViewController(timetable: tableView, errorLabel: errorLabel)
+        timetableController = TimetableViewController(timetable: tableView, errorLabel: errorLabel, usage: .Booked)
         tableView.delegate = timetableController
         tableView.dataSource = timetableController
         tableView.reloadData()

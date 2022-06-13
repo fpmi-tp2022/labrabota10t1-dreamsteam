@@ -21,11 +21,13 @@ class RideTableViewCell: UITableViewCell {
     var onButtonClick : ((RideTableViewCell, Ride) -> ())? = nil
     
     var ride: Ride? = nil
+    var row : Int = -1
     
-    public func constructFromRide(ride: Ride, buttonText: String, buttonHandler: @escaping (RideTableViewCell, Ride) -> ()) {
+    public func constructFromRide(row: Int, ride: Ride, buttonText: String, buttonHandler: @escaping (RideTableViewCell, Ride) -> ()) {
         let ctx = ContextRetriever.RetrieveContext();
         CtxManager = ContextManager(context: ctx);
         _bookedTicketRepository = BookedTicketRepository(contextManager: CtxManager);
+        self.row = row
         self.ride = ride
         self.cellButton.setTitle(buttonText, for: .normal)
         self.onButtonClick = buttonHandler
