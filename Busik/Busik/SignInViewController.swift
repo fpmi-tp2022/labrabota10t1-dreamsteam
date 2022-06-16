@@ -46,9 +46,9 @@ class SignInViewController: UIViewController {
         //ATTENTION: uncomment to get add test data to db if needed
         //But do it only once on each device
         //dataSeeder.SeedUsers()
-        dataSeeder.SeedLocalities();
-        dataSeeder.SeedRoutes();
-        dataSeeder.SeedRides();
+        //dataSeeder.SeedLocalities();
+        //dataSeeder.SeedRoutes();
+        //dataSeeder.SeedRides();
         //dataSeeder.SeedBookedTickets();
         
         errorField.lineBreakMode = .byWordWrapping

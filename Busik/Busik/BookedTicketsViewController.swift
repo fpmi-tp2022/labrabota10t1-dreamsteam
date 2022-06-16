@@ -27,4 +27,8 @@ class BookedTicketsViewController: UIViewController {
         
         yourTicketsLabel.text = NSLocalizedString("YOUR_TICKETS", comment: "")
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        timetableController!.FillTableBookedTickets(UserContext.CurrentUser)
+    }
 }

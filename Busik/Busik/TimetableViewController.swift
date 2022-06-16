@@ -153,6 +153,7 @@ class TimetableViewController : NSObject, UITableViewDataSource, UITableViewDele
         sections.removeAll()
         numSections.removeAll()
         items.removeAll()
+        timetable.reloadData()
         if cityFrom == nil || cityTo == nil {
             errorLabel.text = NSLocalizedString("INTERNAL_ERROR", comment: "")
             return

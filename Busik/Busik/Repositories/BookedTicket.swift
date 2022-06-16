@@ -21,11 +21,17 @@ class BookedTicketRepository
     
     func UnBookTicket(user: User, ride: Ride)
     {
+        print("Deleting ticket for user: ")
+        print(user)
         let bookedTickets = ride.bookedTickets!.allObjects as! [BookedTicket];
         
-        let userBookedTicket = bookedTickets.filter{$0.user!.login == user.login}
+        let userBookedTickets = bookedTickets.filter{$0.user!.login == user.login}
+        
+        let unbookTicket=userBookedTickets.first!;
     
-        user.removeFromBookedTickets(userBookedTicket.first!);
+        user.removeFromBookedTickets(unbookTicket);
+        
+        _ctxManager.Context.delete(unbookTicket);
         
         ride.availableTickets = ride.availableTickets + 1;
         
